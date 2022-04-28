@@ -14,6 +14,38 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <div>
+                <img class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{path('app_homepage')}}">Acceuil</a></li>
+                    <li><a href="#">Inscription</a></li>
+                    <li><a href="#">Se connecter</a></li>
+                    <li><a href="#">Activités</a></li>
+                </ul>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
+        <footer>
+            <div>
+                <ul>
+                    <li><a href="#">Vous êtes animateurs</a></li>
+                    <li><a href="#">Vous êtes parents</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Contactez-nous</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+            <p>&copy Kimanim 2022</p>
+        </footer>
     </body>
 </html>
