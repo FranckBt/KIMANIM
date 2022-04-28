@@ -4,5 +4,8 @@
 
 {% block body %}
 <h1>Les Activités</h1>
+{% for activity in activities %}
+    <h2>{{ activity.description }}</h2>
+{% endfor %}
 
 {% endblock %}
