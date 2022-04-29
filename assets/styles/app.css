@@ -53,12 +53,23 @@ footer {
 /************************* width <= 500 px *****************************/
 
 @media screen and (max-width : 500px) {
-    .logo_homepage img {
-        width: 75%;
+
+    .logo {
+        width: 70%;
+        margin: auto;
+    }
+    .logo img {
+        width: 100%;
     }
 
     nav, h1 {
         display: none;
     }
 
+    footer {
+        position:absolute;
+        width: 100%;
+        bottom: 5%;
+        height:80px;
+    }
 }

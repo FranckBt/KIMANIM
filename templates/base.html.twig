@@ -17,11 +17,9 @@
     <body>
         <header>
             
-            <div>
+            <div class="logo">
                 <h1><a href="{{path('app_homepage')}}">Kimanim</a></h1>
-                <div class="logo_homepage">
             <img src="{{ asset('build/images/Logo_kimanim.png') }}" alt="logo Kimanim">
-            </div>
             </div>
             <nav>
                 <ul class = "flex">
@@ -35,6 +33,7 @@
         {% block body %}{% endblock %}
         <footer>
             <div class="flex">
+            <img src="{{ asset('build/images/icon_fb.png') }}" alt="icon facebook">
                 <ul>
                     <li><a href="#">Vous êtes animateurs</a></li>
                     <li><a href="#">Vous êtes parents</a></li>

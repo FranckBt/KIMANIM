@@ -11,7 +11,5 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-import logoPath from '../public/assets/img/Logo_kimanim.png';
 
-let html = `<img src="${logoPath}" alt="Kimanim logo">`;
 
