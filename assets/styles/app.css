@@ -27,3 +27,38 @@ header {
 footer {
     background-color: rgb(233, 207, 42);
 }
+
+.logo_homepage img {
+    width: 85px;
+}
+
+
+ /***************************** RESPONSIVE ******************************/
+ @media screen and (min-width : 993px) {
+        
+}
+
+/************************* width <= 992 px *****************************/
+
+@media screen and (max-width : 992px) {
+
+}
+
+/************************* width <= 768 px *****************************/
+
+@media screen and (max-width : 768px) {
+    
+}
+
+/************************* width <= 500 px *****************************/
+
+@media screen and (max-width : 500px) {
+    .logo_homepage img {
+        width: 75%;
+    }
+
+    nav, h1 {
+        display: none;
+    }
+
+}
