@@ -11,5 +11,6 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-
+import './js/burger';
+import './styles/burger.css'
 
