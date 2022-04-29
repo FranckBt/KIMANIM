@@ -29,7 +29,7 @@ class Activities
     #[ORM\Column(type: 'string', length: 255)]
     private $city;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string')]
     private $zipcode;
 
     #[ORM\Column(type: 'string', length: 20)]
@@ -108,12 +108,12 @@ class Activities
         return $this;
     }
 
-    public function getZipcode(): ?int
+    public function getZipcode(): ?string
     {
         return $this->zipcode;
     }
 
-    public function setZipcode(int $zipcode): self
+    public function setZipcode(string $zipcode): self
     {
         $this->zipcode = $zipcode;
 
