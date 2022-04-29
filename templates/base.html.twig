@@ -19,7 +19,7 @@
             
             <div class="logo">
                 <h1><a href="{{path('app_homepage')}}">Kimanim</a></h1>
-            <img src="{{ asset('build/images/Logo_kimanim.png') }}" alt="logo Kimanim">
+            <img src="{{ asset('assets/img/Logo_kimanim.png') }}" alt="logo Kimanim">
             </div>
             <nav>
                 <ul class = "flex">
@@ -33,21 +33,25 @@
         {% block body %}{% endblock %}
         <footer>
             <div class="flex">
-            <img src="{{ asset('build/images/icon_fb.png') }}" alt="icon facebook">
-                <ul>
-                    <li><a href="#">Vous êtes animateurs</a></li>
-                    <li><a href="#">Vous êtes parents</a></li>
-                    <li><a href="{{path('app_faq')}}">FAQ</a></li>
+                 <p class="role"><a href="#">Vous êtes parents</a></p>
+                <ul class="social-media">
+                    <li class="social-icon"><a href="#"><img src="{{ asset('assets/img/icon_fb.png') }}" alt="icon facebook"></a></li>
+                    <li class="social-icon"><a href="#"><img src="{{ asset('assets/img/icon_twitter.png') }}" alt="icon twitter"></a></li>
+                    <li class="social-icon"><a href="#"><img src="{{ asset('assets/img/icon_linkedin.png') }}" alt="icon linkedin"></a></li>
                 </ul>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Linkedin</a></li>
-                </ul>
-                <ul>
-                    <li><a href="{{path('app_contact')}}">Contactez-nous</a></li>
-                    <li><a href="{{path('app_mentions')}}">Mentions légales</a></li>
-                </ul>
+                    <p class="role"><a href="#">Vous êtes animateur</a></p>
+            </div>
+            
+
+            <div class="footer-contact">
+                <a href="{{path('app_contact')}}">Contactez-nous</a>
+            </div>
+
+            <div class="flex-2">
+            <ul>
+                     <li><a href="{{path('app_faq')}}">FAQ</a></li>
+                     <li><a href="{{path('app_mentions')}}">Mentions légales</a></li>
+            </ul>
             </div>
             <p>&copy Kimanim 2022</p>
         </footer>
