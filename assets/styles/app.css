@@ -90,6 +90,8 @@ footer {
 
     .social-media {
         max-width: 30%;
+        margin-left: 5%;
+
     }
     .social-icon {
         text-align: center;
@@ -99,9 +101,9 @@ footer {
         justify-content: space-evenly;
         align-items: center;
         padding-top: 5%;
-    };
-    
-  .role {
-        font-size: 3rem;
+    }
+
+    .role {
+        font-size: 17px;
     }
 }
