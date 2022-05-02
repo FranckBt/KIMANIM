@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour{% endblock %}
+
+{% block body %}
+<h1>Mon Compte</h1>
+<div>
+    <img src="{{ app.user.avatar }}">
+    <button>Changer</button>
+</div>
+<div>
+    <ul>
+        <li>{{ app.user.name }}</li>
+        <li>{{ app.user.surname }}</li>
+        <li>{{ app.user.alias }}</li>
+        <li>{{ app.user.email }}</li>
+        <li>{{ app.user.bio }}</li>
+    </ul>
+    <button>Mettre à jour</button>
+</div>
+
+{% endblock %}
