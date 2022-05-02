@@ -21,4 +21,22 @@ class ActivitesController extends AbstractController
             'activities' => $activityRepository->findAll(),
         ]);
     }
+
+    #[Route('/new', name: 'app_activities_create', methods: ['GET', 'POST'])]
+    public function new(Request $request, ActivitiesRepository $activityRepository): Response
+    {
+        $activity = new Activities();
+        $form = $this->createForm(ActivityFrontType::class, $activity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $activityRepository->add($activity);
+            return $this->redirectToRoute('app_activities', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('activites/new.html.twig', [
+            'activity' => $activity,
+            'form' => $form,
+        ]);
+    }
 }
