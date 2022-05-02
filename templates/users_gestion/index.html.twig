@@ -1,0 +1,61 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Users index{% endblock %}
+
+{% block container %}
+    <h1>Users index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Surname</th>
+                <th>Created_at</th>
+                <th>Name</th>
+                <th>Actif</th>
+                <th>Validate</th>
+                <th>Phone</th>
+                <th>Alias</th>
+                <th>Token</th>
+                <th>Token_at</th>
+                <th>Avatar</th>
+                <th>Bio</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                
+                <td>{{ user.surname }}</td>
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.actif ? 'Yes' : 'No' }}</td>
+                <td>{{ user.validate ? 'Yes' : 'No' }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.alias }}</td>
+                <td>{{ user.token }}</td>
+                <td>{{ user.tokenAt ? user.tokenAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.avatar }}</td>
+                <td>{{ user.bio }}</td>
+                <td>
+                    <a href="{{ path('app_users_gestion_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_users_gestion_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_users_gestion_new') }}">Create new</a>
+{% endblock %}
