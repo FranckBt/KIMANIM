@@ -29,7 +29,7 @@ class DefaultFrontController extends AbstractController
         ]);
     }
 
-    #[Route('/parent/mentions_legales', name: 'app_mentions')]
+    #[Route('/mentions_legales', name: 'app_mentions')]
     public function mentions(): Response
     {
         return $this->render('defaultfront/mentions.html.twig', [
