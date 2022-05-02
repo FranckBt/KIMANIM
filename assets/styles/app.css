@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +8,7 @@
 }
 a {
     text-decoration: none;
-    color: black;
+    color: #44638a;
 }
 li {
     list-style-type: none;
@@ -15,53 +18,103 @@ body {
     background-color: lightgrey;
 }
 header {
-    background-color: rgb(78, 126, 140);
-    display: flex;
+    background-color: #4e7e8c;
 }
+
+
 
 footer {
     background-color: rgb(233, 207, 42);
+    font-family: 'Roboto', sans-serif;
+    color: #44638a;
 }
 
 .logo_homepage img {
     width: 85px;
 }
 
+.copyright {
+    font-family: 'Pacifico';
+}
+
+.footer-contact {
+    font-weight: 500;
+}
+
+h1 {
+    display: none;
+}
+
+ul {
+    display: flex;
+}
+
+p {
+text-align: center;    
+}
+
+
 
  /***************************** RESPONSIVE ******************************/
  @media screen and (min-width : 993px) {
-        
-}
-
-/************************* width <= 992 px *****************************/
-
-@media screen and (max-width : 992px) {
-
-}
-
-/************************* width <= 768 px *****************************/
-
-@media screen and (max-width : 768px) {
-    
-}
-
-/************************* width <= 500 px *****************************/
-
-@media screen and (max-width : 500px) {
-
     .logo {
-        padding: 2%;
-        width: 60%;
+        /* padding: 1%; */
         margin: auto;
+        max-width: 30%;
+        
     }
     .logo img {
-        width: 100%;
+        width: 50%;
+        margin-left: 20%;        
     }
 
-    nav, h1 {
+    .burger-menu, .burger-button, h1 {
         display: none;
     }
 
+    header {
+        display: flex;
+        max-height: 100%;
+        max-width: 100%;
+        font-family: 'Pacifico';
+        font-size: x-large;
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 10rem;
+        width: 100%;
+        
+    }
+    nav {
+        width: 70%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        justify-content: center;
+        
+    }
+
+    header nav ul li a:visited {
+        color: rgb(255, 255, 255);
+    }
+
+    header nav ul li a:hover {
+        color: #44638a;
+        background-color: #e8cf49;
+        border-radius: 5px;
+        font-weight: bold;
+        box-shadow: 10px 5px 5px rgb(3, 3, 94);
+        padding: 0.6rem;
+    }
+
+    header nav ul li a:active {
+        color: rgb(255, 255, 255);
+        background-color: #e8cf49;
+    }
+    ul header {
+        gap: 4rem;
+    }
     footer {
         position:absolute;
         width: 100%;
@@ -72,12 +125,244 @@ footer {
         width: 100%;
     }
 
-    ul {
-        display: flex;
+    .flex-2 ul {
+        justify-content: space-between;
+        margin-left: 15%;
+        margin-right: 13%;
+    }
+    .footer-contact {
+        text-align: center;
     }
 
-    p {
-    text-align: center;    
+    .social-media {
+        max-width: 10%;
+        margin-left: 3%;
+
+    }
+    .social-icon {
+        text-align: center;
+    }
+    .flex {
+        display: flex;
+        font-weight: bold;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    }
+
+
+/************************* width <= 992 px *****************************/
+
+@media screen and (max-width : 992px) {
+    
+        .logo {
+            padding: 1%;
+            margin: auto;
+            max-width: 50%;
+            
+        }
+        .logo img {
+            width: 60%;
+            margin-left: 25%;
+            margin-right: 25%;        
+        }
+
+        header {
+            display: grid;
+            max-height: 100%;
+            max-width: 100%;
+            font-family: 'Pacifico';
+            font-size: large;
+        }
+    
+        header nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            width: 100%;
+        }
+        nav {
+            width: 100%;
+            margin-bottom: 1em;
+            justify-content: center;
+            
+        }
+    
+        header nav ul li a:visited {
+            color: rgb(255, 255, 255);
+        }
+    
+        header nav ul li a:hover {
+            color: #44638a;
+            background-color: #e8cf49;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 10px 5px 5px rgb(3, 3, 94);
+        }
+    
+        header nav ul li a:active {
+            color: rgb(255, 255, 255);
+            background-color: #e8cf49;
+        }
+        ul header {
+            gap: 4rem;
+        }
+        footer {
+            position:absolute;
+            width: 100%;
+            bottom: 3%;
+        }
+    
+        footer img {
+            width: 100%;
+        }
+
+        .flex-2 ul {
+            justify-content: space-between;
+            margin-left: 15%;
+            margin-right: 13%;
+        }
+        .footer-contact {
+            text-align: center;
+        }
+    
+        .social-media {
+            max-width: 13%;
+            margin-left: 3%;
+    
+        }
+        .social-icon {
+            text-align: center;
+        }
+        .flex {
+            display: flex;
+            font-weight: bold;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        
+        }
+
+
+
+/************************* width <= 768 px *****************************/
+
+@media screen and (max-width : 768px) {
+    .logo {
+        padding: 1%;
+        margin: auto;
+        max-width: 50%;
+        
+    }
+    .logo img {
+        width: 50%;              
+    }
+
+    header {
+        display: grid;
+        max-height: 100%;
+        max-width: 100%;
+        font-family: 'Pacifico';
+        font-size: large;
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 6rem;
+        width: 100%;
+    }
+    nav {
+        width: 100%;
+        margin-bottom: 1em;
+        justify-content: center;
+        
+    }
+
+    header nav ul li a:visited {
+        color: rgb(255, 255, 255);
+    }
+
+    header nav ul li a:hover {
+        color: #44638a;
+        background-color: #e8cf49;
+        border-radius: 5px;
+        font-weight: bold;
+        box-shadow: 10px 5px 5px rgb(3, 3, 94);
+    }
+
+    header nav ul li a:active {
+        color: rgb(255, 255, 255);
+        background-color: #e8cf49;
+    }
+    ul header {
+        gap: 4rem;
+    }
+    footer {
+        position:absolute;
+        width: 100%;
+        bottom: 3%;
+    }
+
+    footer img {
+        width: 100%;
+    }
+
+   
+    .flex-2 ul {
+        justify-content: space-between;
+        margin-left: 15%;
+        margin-right: 13%;
+    }
+    .footer-contact {
+        text-align: center;
+    }
+
+    .social-media {
+        max-width: 13%;
+        margin-left: 3%;
+
+    }
+    .social-icon {
+        text-align: center;
+    }
+    .flex {
+        display: flex;
+        font-weight: bold;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    }
+    
+
+
+/************************* width <= 500 px *****************************/
+
+@media screen and (max-width : 500px) {
+
+    .logo {
+        padding: 2%;
+        width: 60%;
+        margin-left: 15%;
+    }
+    .logo img {
+        width: 100%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    footer {
+        position:absolute;
+        width: 100%;
+        bottom: 4%;
+    }
+
+    footer img {
+        width: 100%;
     }
 
     .flex-2 ul {
@@ -91,7 +376,7 @@ footer {
 
     .social-media {
         max-width: 30%;
-        margin-left: 5%;
+        margin-left: 8%;
 
     }
     .social-icon {
@@ -107,4 +392,5 @@ footer {
     .role {
         font-size: 17px;
     }
+
 }
