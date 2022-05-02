@@ -4,393 +4,302 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
+
+a,footer {
+    color: #44638a
+}
+
 a {
-    text-decoration: none;
-    color: #44638a;
+    text-decoration: none
 }
+
 li {
-    list-style-type: none;
+    list-style-type: none
 }
 
 body {
-    background-color: lightgrey;
-}
-header {
-    background-color: #4e7e8c;
+    background-color: #d3d3d3
 }
 
+header {
+    background-color: #4e7e8c
+}
+
+header nav ul li a:visited {
+    color: #fff
+}
+
+header nav ul li a:hover {
+    color: #44638a;
+    background-color: #e8cf49;
+    border-radius: 5px;
+    font-weight: 700;
+    box-shadow: 10px 5px 5px #03035e
+}
+
+header nav ul li a:active {
+    color: #fff;
+    background-color: #e8cf49
+}
 
 
 footer {
-    background-color: rgb(233, 207, 42);
-    font-family: 'Roboto', sans-serif;
-    color: #44638a;
+    background-color: #e9cf2a;
+    font-family: "Roboto",sans-serif
 }
 
 .logo_homepage img {
-    width: 85px;
+    width: 85px
 }
 
 .copyright {
-    font-family: 'Pacifico';
+    font-family: "Pacifico"
 }
 
 .footer-contact {
     font-weight: 500;
+    text-align: center;
 }
 
-h1 {
-    display: none;
+
+title {
+    display: none
 }
 
-ul {
+.social-media {
+    display: flex
+}
+
+ul header {
+    gap: 4rem
+}
+
+.copyright {
+    text-align: center
+}
+
+header nav ul {
+    display: flex;
+    gap: 4rem;
+}
+
+.flex {
+    padding-top: 1em;
+    display: flex;
+    font-weight: 700;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.flex-2 ul {
     display: flex;
 }
 
-p {
-text-align: center;    
+footer {
+    position: absolute;
+    bottom: 3%;
 }
 
+.burger-button,.burger-menu,h1 {
+    display: none
+}
 
-
- /***************************** RESPONSIVE ******************************/
- @media screen and (min-width : 993px) {
+@media screen and (min-width:993px) {
     .logo {
-        /* padding: 1%; */
         margin: auto;
-        max-width: 30%;
-        
+        max-width: 30%
     }
+
     .logo img {
         width: 50%;
-        margin-left: 20%;        
-    }
-
-    .burger-menu, .burger-button, h1 {
-        display: none;
+        margin-left: 20%
     }
 
     header {
         display: flex;
         max-height: 100%;
         max-width: 100%;
-        font-family: 'Pacifico';
-        font-size: x-large;
+        font-family: "Pacifico";
+        font-size: x-large
+    }
+
+    header nav ul,nav {
+        justify-content: center
     }
 
     header nav ul {
         display: flex;
-        justify-content: center;
-        gap: 10rem;
-        width: 100%;
-        
+        gap: 4rem;
     }
+
     nav {
         width: 70%;
         margin-top: 1em;
-        margin-bottom: 1em;
-        justify-content: center;
-        
+        margin-bottom: 1em
     }
 
-    header nav ul li a:visited {
-        color: rgb(255, 255, 255);
-    }
-
-    header nav ul li a:hover {
-        color: #44638a;
-        background-color: #e8cf49;
-        border-radius: 5px;
-        font-weight: bold;
-        box-shadow: 10px 5px 5px rgb(3, 3, 94);
-        padding: 0.6rem;
-    }
-
-    header nav ul li a:active {
-        color: rgb(255, 255, 255);
-        background-color: #e8cf49;
-    }
-    ul header {
-        gap: 4rem;
-    }
-    footer {
-        position:absolute;
-        width: 100%;
-        bottom: 5%;
-    }
-
-    footer img {
-        width: 100%;
+    footer,footer img {
+        width: 100%
     }
 
     .flex-2 ul {
         justify-content: space-between;
         margin-left: 15%;
-        margin-right: 13%;
-    }
-    .footer-contact {
-        text-align: center;
+        margin-right: 13%
     }
 
     .social-media {
         max-width: 10%;
-        margin-left: 3%;
-
+        margin-left: 3%
     }
+
     .social-icon {
-        text-align: center;
+        text-align: center
     }
-    .flex {
-        display: flex;
-        font-weight: bold;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-    
-    }
+}
 
-
-/************************* width <= 992 px *****************************/
-
-@media screen and (max-width : 992px) {
-    
-        .logo {
-            padding: 1%;
-            margin: auto;
-            max-width: 50%;
-            
-        }
-        .logo img {
-            width: 60%;
-            margin-left: 25%;
-            margin-right: 25%;        
-        }
-
-        header {
-            display: grid;
-            max-height: 100%;
-            max-width: 100%;
-            font-family: 'Pacifico';
-            font-size: large;
-        }
-    
-        header nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 6rem;
-            width: 100%;
-        }
-        nav {
-            width: 100%;
-            margin-bottom: 1em;
-            justify-content: center;
-            
-        }
-    
-        header nav ul li a:visited {
-            color: rgb(255, 255, 255);
-        }
-    
-        header nav ul li a:hover {
-            color: #44638a;
-            background-color: #e8cf49;
-            border-radius: 5px;
-            font-weight: bold;
-            box-shadow: 10px 5px 5px rgb(3, 3, 94);
-        }
-    
-        header nav ul li a:active {
-            color: rgb(255, 255, 255);
-            background-color: #e8cf49;
-        }
-        ul header {
-            gap: 4rem;
-        }
-        footer {
-            position:absolute;
-            width: 100%;
-            bottom: 3%;
-        }
-    
-        footer img {
-            width: 100%;
-        }
-
-        .flex-2 ul {
-            justify-content: space-between;
-            margin-left: 15%;
-            margin-right: 13%;
-        }
-        .footer-contact {
-            text-align: center;
-        }
-    
-        .social-media {
-            max-width: 13%;
-            margin-left: 3%;
-    
-        }
-        .social-icon {
-            text-align: center;
-        }
-        .flex {
-            display: flex;
-            font-weight: bold;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-        
-        }
-
-
-
-/************************* width <= 768 px *****************************/
-
-@media screen and (max-width : 768px) {
+@media screen and (max-width:992px) {
     .logo {
         padding: 1%;
         margin: auto;
-        max-width: 50%;
-        
+        max-width: 50%
     }
+
     .logo img {
-        width: 50%;              
+        width: 60%;
+        margin-left: 25%;
+        margin-right: 25%
     }
 
     header {
-        display: grid;
         max-height: 100%;
         max-width: 100%;
-        font-family: 'Pacifico';
-        font-size: large;
+        font-family: "Pacifico";
+        font-size: large
     }
 
-    header nav ul {
-        display: flex;
-        justify-content: center;
-        gap: 6rem;
+    header nav ul,nav {
         width: 100%;
+        justify-content: center;
     }
+
     nav {
-        width: 100%;
-        margin-bottom: 1em;
-        justify-content: center;
-        
+        margin-bottom: 1em
     }
 
-    header nav ul li a:visited {
-        color: rgb(255, 255, 255);
+    footer,footer img {
+        width: 100%
     }
 
-    header nav ul li a:hover {
-        color: #44638a;
-        background-color: #e8cf49;
-        border-radius: 5px;
-        font-weight: bold;
-        box-shadow: 10px 5px 5px rgb(3, 3, 94);
-    }
-
-    header nav ul li a:active {
-        color: rgb(255, 255, 255);
-        background-color: #e8cf49;
-    }
-    ul header {
-        gap: 4rem;
-    }
-    footer {
-        position:absolute;
-        width: 100%;
-        bottom: 3%;
-    }
-
-    footer img {
-        width: 100%;
-    }
-
-   
     .flex-2 ul {
         justify-content: space-between;
         margin-left: 15%;
-        margin-right: 13%;
+        margin-right: 13%
     }
+
     .footer-contact {
-        text-align: center;
+        text-align: center
     }
 
     .social-media {
         max-width: 13%;
-        margin-left: 3%;
-
+        margin-left: 3%
     }
+
     .social-icon {
-        text-align: center;
+        text-align: center
     }
-    .flex {
-        display: flex;
-        font-weight: bold;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-    
-    }
-    
+}
 
-
-/************************* width <= 500 px *****************************/
-
-@media screen and (max-width : 500px) {
-
+@media screen and (max-width:768px) {
     .logo {
-        padding: 2%;
-        width: 60%;
-        margin-left: 15%;
+        padding: 1%;
+        margin: auto;
+        max-width: 50%
     }
+
     .logo img {
+        width: 50%
+    }
+
+    header {
+        max-height: 100%;
+        max-width: 100%;
+        font-family: "Pacifico";
+        font-size: large
+    }
+
+    header nav ul,nav {
         width: 100%;
+        justify-content: center
+    }
+
+    header nav ul {
+        display: flex;
+        gap: 1rem
     }
 
     nav {
-        display: none;
+        margin-bottom: 1em
     }
 
-    footer {
-        position:absolute;
-        width: 100%;
-        bottom: 4%;
+    footer,footer img {
+        width: 100%
     }
 
-    footer img {
-        width: 100%;
+    .social-media {
+        max-width: 13%;
+        margin-left: 3%
+    }
+
+    .social-icon {
+        text-align: center
+    }
+}
+
+@media screen and (max-width:500px) {
+    .logo {
+        padding: 2%;
+        width: 60%;
+        margin-left: 15%
+    }
+
+    .logo img,footer,footer img {
+        width: 100%
+    }
+
+    .burger-button,.burger-menu {
+        display: block ;
+    }
+
+    nav {
+        display: none
     }
 
     .flex-2 ul {
         justify-content: space-between;
         margin-left: 20%;
-        margin-right: 5%;
-    }
-    .footer-contact {
-        text-align: center;
+        margin-right: 5%
     }
 
     .social-media {
-        max-width: 30%;
-        margin-left: 8%;
+        max-width: 20%;
+        margin-left: 8%
+    }
 
-    }
     .social-icon {
-        text-align: center;
+        text-align: center
     }
+
     .flex {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        padding-top: 5%;
     }
 
     .role {
-        font-size: 17px;
+        max-width: 20%;
     }
-
 }
