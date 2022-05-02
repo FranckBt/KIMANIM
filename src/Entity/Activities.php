@@ -38,6 +38,9 @@ class Activities
     #[ORM\Column(type: 'integer')]
     private $min_participants;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $title;
+
     public function __construct()
     {
         $this->setCreatedAt(new DateTimeImmutable());
@@ -140,6 +143,18 @@ class Activities
     public function setMinParticipants(int $min_participants): self
     {
         $this->min_participants = $min_participants;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

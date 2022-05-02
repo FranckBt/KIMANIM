@@ -23,7 +23,8 @@ class ActivitiesFixtures extends Fixture
                 ->setZipcode($faker->postcode)
                 ->setDescription($activities[array_rand($activities,1)])
                 ->setStatus($faker->randomElement(['Projet', 'Animateur requis', 'Confirmé', 'Annulé', 'Terminé']))
-                ->setMinParticipants($faker->numberBetween(1, 10));
+                ->setMinParticipants($faker->numberBetween(1, 10))
+                ->setTitle(($faker->text(100)));
                 
             $manager->persist($activity);
 
