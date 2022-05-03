@@ -13,10 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/users/gestion')]
 class UsersGestionController extends AbstractController
 {
-    #[Route('/', name: 'app_users_gestion_index', methods: ['GET'])]
+    #[Route('/animateur', name: 'app_users_gestion_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
         return $this->render('users_gestion/index.html.twig', [
+            'users' => $usersRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/parent', name: 'app_users_gestion_parentindex', methods: ['GET'])]
+    public function parentindex(UsersRepository $usersRepository): Response
+    {
+        return $this->render('users_gestion/parentindex.html.twig', [
             'users' => $usersRepository->findAll(),
         ]);
     }
