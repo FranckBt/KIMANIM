@@ -3,15 +3,67 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1 class="title-register">Register</h1>
 
     {{ form_start(registrationForm) }}
+    <div class="wrapperformreal">
+        {{ form_row(registrationForm.rolesPlus) }}
+    </div>           
+
+        <div class="wrapperform">
+            <input type="radio" name="select" id="option-1">
+            <input type="radio" name="select" id="option-2">
+            <label for="option-1" class="option option-1">
+         <div class="dot"></div>
+            <span>Parent</span>
+            </label>
+            <label for="option-2" class="option option-2">
+        <div class="dot"></div>
+            <span>Animateur</span>
+            </label>
+        </div>
+
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
-        {{ form_row(registrationForm.rolesPlus) }}
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn-submit">Register</button>
     {{ form_end(registrationForm) }}
+{% endblock %}
+
+
+ {% block javascripts %}
+     <script>
+        window.addEventListener("DOMContentLoaded", (e) => {
+        const radios = document.querySelectorAll('.wrapperform input[type=radio]');
+        const wrapper = document.querySelector('form');
+       
+        radios.forEach(r => {
+            r.addEventListener('click', function(e) {
+                let opt = r.id;
+
+                if(opt=== 'option-1') {
+                    console.log('opt1');
+
+                    //console.log(document.getElementById('registration_form_rolesPlus_0'))
+                    document.getElementById('registration_form_rolesPlus_0').checked = true;
+                    wrapper.classList.add('parent-register');
+
+                } else if (opt === 'option-2') {
+                  
+                    document.getElementById('registration_form_rolesPlus_1').checked = true;
+                    wrapper.classList.remove('parent-register');
+
+                }
+                
+            })
+        })
+        console.log(radios);
+  });
+
+
+    
+     
+     </script>
 {% endblock %}
