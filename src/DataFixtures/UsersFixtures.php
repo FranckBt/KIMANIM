@@ -31,7 +31,6 @@ class UsersFixtures extends Fixture
         $password = $this->hasher->hashPassword($user2, '123456');
         $user2->setPassword($password);
         $manager->persist($user2);
-        // $manager->persist($product);
 
         $user3 = (new Users())
             ->setEmail('admin@gmail.com')
@@ -48,16 +47,13 @@ class UsersFixtures extends Fixture
                 ->setSurname($faker->firstName)
                 ->setEmail($faker->email)
                 ->setRoles(array($faker->randomElement(["ROLE_PARENT", "ROLE_ANIMATEUR"])));
-                $password = $this->hasher->hashPassword($user, '123456');
-                $user->setPassword($password);
+            $password = $this->hasher->hashPassword($user, '123456');
+            $user->setPassword($password);
             $manager->persist($user);
         }
 
-
-
-
-
         $manager->flush();
+        $this->addReference('anim', $user1);
 
     }
 }

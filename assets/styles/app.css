@@ -28,7 +28,9 @@ li {
 body {
     background-color: #d3d3d3;
 }
-
+.container{
+    min-height: 80vh;
+}
 header {
     background-color: #4e7e8c
 }
@@ -55,7 +57,8 @@ footer {
     font-family: "Roboto",sans-serif;
     position: absolute;
     text-align: center;
-    bottom: 0;
+    /* bottom: 0; */
+
 
 }
 
