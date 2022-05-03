@@ -6,6 +6,7 @@ use App\Entity\Users;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Faker;
 
 class UsersFixtures extends Fixture
 {
@@ -39,6 +40,24 @@ class UsersFixtures extends Fixture
         $user3->setPassword($password);
         $manager->persist($user3);
 
+        $faker = Faker\Factory::create('fr_FR'); // create a French faker
+
+        for ($i = 0; $i < 50; $i++) {
+            $user = new Users();
+            $user
+                ->setSurname($faker->firstName)
+                ->setEmail($faker->email)
+                ->setRoles(array($faker->randomElement(["ROLE_PARENT", "ROLE_ANIMATEUR"])));
+                $password = $this->hasher->hashPassword($user, '123456');
+                $user->setPassword($password);
+            $manager->persist($user);
+        }
+
+
+
+
+
         $manager->flush();
+
     }
 }
