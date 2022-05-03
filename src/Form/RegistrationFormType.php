@@ -19,6 +19,9 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('rolesPlus', ChoiceType::class, [
+                'attr' => [
+                    'class' => 'wrapper',
+                ],
                 'required' => true,
                 'mapped' => false,
                 'multiple' => false,

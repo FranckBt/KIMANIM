@@ -13,4 +13,5 @@ import './bootstrap';
 
 import './js/burger';
 import './styles/burger.css'
+import './styles/formulaire.css'
 
