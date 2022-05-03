@@ -41,6 +41,10 @@ class Activities
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'activities')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
     public function __construct()
     {
         $this->setCreatedAt(new DateTimeImmutable());
@@ -155,6 +159,18 @@ class Activities
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

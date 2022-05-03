@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Activities;
 use App\Entity\Users;
+use App\Form\ActivityFrontType;
 use App\Form\UserType;
+use App\Repository\ActivitiesRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +40,25 @@ class AccountController extends AbstractController
 
         return $this->renderForm('users/update.html.twig', [
             'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/newActivity', name: 'app_activites_create', methods: ['GET', 'POST'])]
+    public function new(Request $request, ActivitiesRepository $activityRepository): Response
+    {
+        $activity = new Activities();
+        $form = $this->createForm(ActivityFrontType::class, $activity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $activity->setUser($this->getUser());
+            $activityRepository->add($activity);
+            return $this->redirectToRoute('app_activites', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('activites/new.html.twig', [
+            'activity' => $activity,
             'form' => $form,
         ]);
     }
