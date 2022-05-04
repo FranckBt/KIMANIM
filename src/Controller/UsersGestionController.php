@@ -17,7 +17,8 @@ class UsersGestionController extends AbstractController
     public function index(UsersRepository $usersRepository): Response
     {
         return $this->render('users_gestion/parentindex.html.twig', [
-            'users' => $usersRepository->findAllUser('["ROLE_ANIMATEUR"]')
+            'users' => $usersRepository->findAllUser('["ROLE_ANIMATEUR"]'),
+            'titreTable' => 'Animateurs'
         ]);
     }
 
@@ -25,7 +26,8 @@ class UsersGestionController extends AbstractController
     public function parentindex(UsersRepository $usersRepository): Response
     {
         return $this->render('users_gestion/parentindex.html.twig', [
-           'users' => $usersRepository->findAllUser('["ROLE_PARENT"]')
+           'users' => $usersRepository->findAllUser('["ROLE_PARENT"]'),
+            'titreTable' => 'Parents'
         ]);
     }
 
@@ -60,6 +62,7 @@ class UsersGestionController extends AbstractController
     {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->add($user);
@@ -68,7 +71,7 @@ class UsersGestionController extends AbstractController
 
         return $this->renderForm('users_gestion/edit.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'form' => $form, 
         ]);
     }
 
