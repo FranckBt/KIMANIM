@@ -36,8 +36,10 @@ label {
                     /* Style formulaire de creation d'activités  */
 
 
+/* input label textarea {
+  font-family: 'Roboto';
+} */
 
-                    
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -45,38 +47,47 @@ input[type=text], input[type=password] {
 }
 
 input[type=date] {
+  font-family: 'Roboto';
   border: solid 2px #44638a;
-  background-color: transparent;
-  color: #44638a;
+  background-color: #4d7f8b;
+  color: white;
   height: 30px;
-  width: 30%;
+  width: 40%;
   text-align: center;
   border-radius: 20px;
   padding: 1rem;
 
 }
-#activity_front input , textarea {
+#activity_front input , textarea , select {
   margin-top: 0.5rem;
+  font-family: 'Roboto';
 }
 
 #activity_front label {
 display: none;
 }
 
+#activity_front_start_on {
+display: flex;
+margin-left: 2rem;
+gap: 5rem;
+}
+
 #activity_front_start_on_time {
-  display: flex;
+  display: flex; 
+  width: 30%;
 }
 
 #activity_front_description {
   height: 7rem;
 }
 select {
+  font-family: 'Roboto';
   width: 50%;
   height: 1.5rem;
   font-size: 70%;
-  font-weight: bold;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 10px;
   background-color: #44638a;
   border: none;
   border-bottom: 2px solid #44638a;
