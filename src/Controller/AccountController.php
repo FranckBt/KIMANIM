@@ -25,7 +25,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/update', name: 'app_account_update', methods: ['GET', 'POST'])]
+    #[Route('/update', name: 'account_update', methods: ['GET', 'POST'])]
     public function edit(Request $request, UsersRepository $userRepository): Response
     {
         $user = $this->getUser();
@@ -35,7 +35,7 @@ class AccountController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->add($user);
-            return $this->redirectToRoute('app_account_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('users/update.html.twig', [
@@ -44,7 +44,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/newActivity', name: 'app_activites_create', methods: ['GET', 'POST'])]
+    #[Route('/new_activity', name: 'account_create_activity', methods: ['GET', 'POST'])]
     public function new(Request $request, ActivitiesRepository $activityRepository): Response
     {
         $activity = new Activities();
@@ -60,6 +60,15 @@ class AccountController extends AbstractController
         return $this->renderForm('activites/new.html.twig', [
             'activity' => $activity,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/show_activities', name: 'account_show_activities')]
+    public function showActivities(): Response
+    {
+        $user = $this->getUser();
+        return $this->render('users/activites.html.twig', [
+            'activities' => $user->getActivities()
         ]);
     }
 }
