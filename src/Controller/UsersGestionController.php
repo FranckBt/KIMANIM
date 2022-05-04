@@ -16,8 +16,8 @@ class UsersGestionController extends AbstractController
     #[Route('/animateur', name: 'app_users_gestion_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
-        return $this->render('users_gestion/index.html.twig', [
-            'users' => $usersRepository->findAll(),
+        return $this->render('users_gestion/parentindex.html.twig', [
+            'users' => $usersRepository->findAllUser('["ROLE_ANIMATEUR"]')
         ]);
     }
 
@@ -25,7 +25,7 @@ class UsersGestionController extends AbstractController
     public function parentindex(UsersRepository $usersRepository): Response
     {
         return $this->render('users_gestion/parentindex.html.twig', [
-            'users' => $usersRepository->findAll(),
+           'users' => $usersRepository->findAllUser('["ROLE_PARENT"]')
         ]);
     }
 

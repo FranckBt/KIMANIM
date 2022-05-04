@@ -10,10 +10,10 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Roles</th>
-				<th>Surname</th>
+				
+				<th>Prenom</th>
 				<th>Created_at</th>
-				<th>Name</th>
+				<th>Nom</th>
 				<th>Actif</th>
 				<th>Validate</th>
 				<th>actions</th>
@@ -22,10 +22,10 @@
 		<tbody>
 
 			{% for user in users %}
-				{% if user.roles == ["ROLE_PARENT","ROLE_USER"] %}
+				
 					<tr>
 						<td>{{ user.id }}</td>
-						<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+
 						<td>{{ user.surname }}</td>
 						<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ user.name }}</td>
@@ -36,9 +36,6 @@
 							<a href="{{ path('app_users_gestion_edit', {'id': user.id}) }}">edit</a>
 						</td>
 					</tr>
-
-
-				{% endif %}
 
 
 			{% else %}

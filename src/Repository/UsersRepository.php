@@ -92,4 +92,21 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         ;
     }
     */
+
+    public function findAllUser(?string $roles)
+    {
+        if (!$roles) {
+            $query = $this->createQueryBuilder('u')
+                ->orderBy('u.created_at', 'ASC')
+            ;
+            return $query->getQuery()->getResult();
+        }else {
+            $query = $this->createQueryBuilder('u')
+                ->where('u.roles LIKE :val')
+                ->setParameter('val', $roles)
+                ->orderBy('u.created_at', 'ASC')
+            ;
+            return $query->getQuery()->getResult();
+        }
+    }
 }
