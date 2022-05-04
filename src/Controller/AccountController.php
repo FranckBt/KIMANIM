@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route ('/account')]
 class AccountController extends AbstractController
 {
-    #[Route('/', name: 'app_account_index')]
+    #[Route('/', name: 'account_index')]
     public function index(): Response
     {
         // $user = $this->getUser();
