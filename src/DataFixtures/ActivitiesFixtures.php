@@ -23,12 +23,12 @@ class ActivitiesFixtures extends Fixture implements DependentFixtureInterface
                 ->setAdress($faker->streetAddress)
                 ->setCity($faker->city)
                 ->setZipcode($faker->postcode)
-                ->setDescription($activities[array_rand($activities, 1)])
                 ->setStatus($faker->randomElement(['Projet', 'Animateur requis', 'Confirmé', 'Annulé', 'Terminé']))
                 ->setMinParticipants($faker->numberBetween(1, 10))
-                ->setTitle(($faker->text(100)))
-                ->setUser($this->getReference('anim'));
-
+                ->setDescription(($faker->text(100)))
+                ->setTitle($activities[array_rand($activities, 1)])
+                ->setUser($this->getReference('anim'))
+                ->setIllustration('/assets/img/activite_test.png');
 
             $manager->persist($activity);
         }
