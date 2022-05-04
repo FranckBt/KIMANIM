@@ -21,11 +21,11 @@ main {
 } */
 
 /* cache les images par défaut */
-.mySlides {
+.slide {
     display: none;
 } */
 
-.mySlides img {
+.slide img {
     width: 100%;
 }
 

@@ -21,7 +21,7 @@ let slideIndex1 = 1;
 showSlides1 ();
 
 function showSlides1(){
-        let slides = document.getElementsByClassName("mySlide");
+        let slides = document.getElementsByClassName("slide");
     
         for(let i =0; i< slides.length;i++){
             slides[i].style.display="none";
