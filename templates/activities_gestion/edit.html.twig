@@ -1,0 +1,13 @@
+{% extends 'admin.html.twig' %}
+								{% block editactivites %}
+
+{% block title %}Edit Activities{% endblock %}
+
+    <h1>Edit Activities</h1>
+
+    {{ include('activities_gestion/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_activities_gestion_index') }}">back to list</a>
+
+    {{ include('activities_gestion/_delete_form.html.twig') }}
+{% endblock %}

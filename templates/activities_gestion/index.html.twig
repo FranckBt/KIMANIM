@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+{% block activites %}
+
+	{% block title %}Activities index
+	{% endblock %}
+
+
+	<h1>Activities index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Description</th>
+				<th>Created_at</th>
+				<th>Start_on</th>
+				<th>Adress</th>
+				<th>City</th>
+				<th>Zipcode</th>
+				<th>Status</th>
+				<th>Min_participants</th>
+				<th>Title</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for activity in activities %}
+				<tr>
+					<td>{{ activity.id }}</td>
+					<td>{{ activity.description }}</td>
+					<td>{{ activity.createdAt ? activity.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ activity.startOn ? activity.startOn|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ activity.adress }}</td>
+					<td>{{ activity.city }}</td>
+					<td>{{ activity.zipcode }}</td>
+					<td>{{ activity.status }}</td>
+					<td>{{ activity.minParticipants }}</td>
+					<td>{{ activity.title }}</td>
+					<td>
+						<a href="{{ path('app_activities_gestion_show', {'id': activity.id}) }}">show</a>
+						<a href="{{ path('app_activities_gestion_edit', {'id': activity.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="11">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
