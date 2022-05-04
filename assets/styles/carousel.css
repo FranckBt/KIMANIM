@@ -1,0 +1,59 @@
+/* Style du Carrousel en header */
+
+
+main {
+    max-width: 100%;
+    max-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    position: relative;
+    top: 0px;
+    overflow: hidden;
+}
+
+
+/* Le container */
+.slideshow-container {
+    object-fit: cover;
+    position: relative;
+} */
+
+/* cache les images par défaut */
+.mySlides {
+    display: none;
+} */
+
+.mySlides img {
+    width: 100%;
+}
+
+
+/* Animation Fading  */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
