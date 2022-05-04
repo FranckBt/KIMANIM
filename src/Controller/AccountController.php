@@ -44,7 +44,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/new_activity', name: 'account_create_activity', methods: ['GET', 'POST'])]
+    #[Route('/new/activity', name: 'account_create_activity', methods: ['GET', 'POST'])]
     public function new(Request $request, ActivitiesRepository $activityRepository): Response
     {
         $activity = new Activities();
@@ -63,12 +63,12 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/show_activities', name: 'account_show_activities')]
+    #[Route('/show/activites', name: 'account_show_activities')]
     public function showActivities(): Response
     {
         $user = $this->getUser();
         return $this->render('users/activites.html.twig', [
-            'activities' => $user->getActivities()
+            'activities' => $user->getActivities(),
         ]);
     }
 }
