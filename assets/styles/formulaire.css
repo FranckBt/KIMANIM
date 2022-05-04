@@ -36,10 +36,6 @@ label {
                     /* Style formulaire de creation d'activités  */
 
 
-/* input label textarea {
-  font-family: 'Roboto';
-} */
-
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -70,16 +66,24 @@ display: none;
 #activity_front_start_on {
 display: flex;
 margin-left: 2rem;
-gap: 5rem;
+gap: 2rem;
+}
+
+#activity_front_start_on_time select {
+  height: 30px;
+  border-radius: 20px;
+  
 }
 
 #activity_front_start_on_time {
   display: flex; 
-  width: 30%;
+  width: 40%;
+  margin-top: 0.2rem;
+
 }
 
 #activity_front_description {
-  height: 7rem;
+  height: 5rem;
 }
 select {
   font-family: 'Roboto';

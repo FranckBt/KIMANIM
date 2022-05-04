@@ -21,13 +21,14 @@ class ActivityFrontType extends AbstractType
         }
 
         $builder
+            ->add('start_on', DateTimeType::class, [
+            'date_widget' => 'single_text',
+            'input' => 'datetime_immutable'
+        ])
             ->add('title', TextType::class, ['attr' => [
                 'placeholder' => 'Nom activité',
             ]])
-            ->add('start_on', DateTimeType::class, [
-                'date_widget' => 'single_text',
-                'input' => 'datetime_immutable'
-            ])
+            
             ->add('adress', TextareaType::class, ['attr' => [
                 'placeholder' => 'Adresse',
             ]])
