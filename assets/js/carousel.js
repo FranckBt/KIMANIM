@@ -32,6 +32,6 @@ function showSlides1(){
         }
         slides[slideIndex1 -1].style.display="block";
     
-        setTimeout(showSlides1, 5000); // changes d'images toutes les 2 secondes
+        setTimeout(showSlides1, 8000); // changes d'images toutes les 2 secondes
     }
 

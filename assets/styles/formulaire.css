@@ -12,14 +12,17 @@ form {
     text-align: center
 }
 
+.btn-submit,button,select {
+    cursor: pointer;
+    border-radius: 10px
+}
+
 .btn-submit,button {
     padding: 10px 0;
     width: 60%;
     background-color: #4d7f8b;
     border: solid 2px #e8cf49;
     color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
     margin-top: 5%
 }
 
@@ -33,20 +36,30 @@ input[type=password],input[type=text] {
 }
 
 input[type=date] {
-    font-family: "Roboto";
     border: solid 2px #44638a;
     background-color: #4d7f8b;
-    color: #fff;
     height: 30px;
     width: 40%;
-    text-align: center;
-    border-radius: 20px;
-    padding: .3rem
+    border-radius: 20px
 }
 
 #activity_front input,textarea {
     margin-top: .5rem;
     font-family: "Roboto"
+}
+
+select {
+    margin-top: .2rem;
+    width: 50%;
+    height: 1.5rem;
+    font-size: 70%;
+    background-color: #44638a;
+    border: 0;
+    border-bottom: 2px solid #44638a;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: color .3s ease,background-color .3s ease,border-bottom-color .3s ease
 }
 
 #activity_front label {
@@ -55,28 +68,29 @@ input[type=date] {
 
 #activity_front_start_on {
     display: flex;
-    margin-left: 2rem;
-    gap: 2rem;
+    justify-content: center;
+    gap: 2rem
 }
 
 #activity_front_start_on_time select {
-    margin-top: 0;
     height: 20px;
     border-radius: 20px
 }
 
+#activity_front_start_on_time,input[type=date],select {
+    font-family: "Roboto";
+    color: #fff;
+    text-align: center
+}
+
 #activity_front_start_on_time {
     display: flex;
-   font-family: "Roboto";
     border: solid 2px #44638a;
     background-color: #4d7f8b;
-    color: #fff;
     height: 30px;
     width: 40%;
-    text-align: center;
     border-radius: 20px;
-    padding: .2rem;
-    margin-top: 2%;
+    margin-top: 8px
 }
 
 input::placeholder,textarea::placeholder {
@@ -88,39 +102,8 @@ input::placeholder,textarea::placeholder {
     height: 5rem
 }
 
-select {
-    font-family: "Roboto";
-    width: 50%;
-    height: 1.5rem;
-    font-size: 70%;
-    cursor: pointer;
-    border-radius: 10px;
-    background-color: #44638a;
-    border: 0;
-    border-bottom: 2px solid #44638a;
-    color: #fff;
-    appearance: none;
-    text-align: center;
-    margin: .5rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    transition: color .3s ease,background-color .3s ease,border-bottom-color .3s ease
-}
-
 select::-ms-expand {
     display: none
-}
-
-.select-icon {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 30px;
-    height: 36px;
-    pointer-events: none;
-    border: 2px solid #44638a;
-    padding-left: 5px;
-    transition: background-color .3s ease,border-color .3s ease
 }
 
 .select-icon svg.icon {
@@ -231,13 +214,12 @@ textarea {
     background-color: #4d7f8b
 }
 
-
 @media screen and (max-width:500px) {
-  form {
-    max-width: 90%;
-  }
-  .wrapperform .option {
-    padding: 0 51px;
+    form {
+        max-width: 90%
+    }
 
-  }
+    .wrapperform .option {
+        padding: 0 51px
+    }
 }

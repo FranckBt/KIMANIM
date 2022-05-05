@@ -29,7 +29,7 @@ body {
     background-color: #d3d3d3;
 }
 .container{
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-bottom: 2rem;
     min-height: 80vh;
 }
