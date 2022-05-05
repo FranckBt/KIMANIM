@@ -45,6 +45,9 @@ class Activities
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $illustration;
+
     public function __construct()
     {
         $this->setCreatedAt(new DateTimeImmutable());
@@ -171,6 +174,18 @@ class Activities
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }

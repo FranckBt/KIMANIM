@@ -1,0 +1,36 @@
+<div class="card">
+        <div class="card-title">
+            {# Image de l'animation#}
+            {# <img src="https://picsum.photos/300/300"> #}
+            <img src="
+            {% if activity.illustration is empty%}
+            #
+            {% else %}
+                {{asset(activity.illustration)}}
+            {% endif %}">
+            <h2>{{ activity.title }}</h2>
+        </div>
+        <div class="card-details">
+            {# Lien vers profil de l'animateur avec son avatar#}
+            <span>Animé par : <span><a href="#"><img src="https://picsum.photos/30/30"></a>
+            <p>{{ activity.description }}</p>
+        </div>
+        {% if not is_granted('ROLE_ANIMATEUR') %}
+            <div class="card-btn">
+                {# Si non enregistré redirection vers Login
+                sinon vers formulaire d'enregistrement enfants participants #}
+                <a href="
+                {% if app.user %}
+                #
+                {# {{ path('register_kid')}} #}
+                {% else %}
+                    {{ path('login')}}
+                {% endif %}
+
+                ">S'inscrire</a>
+            </div>
+            {% if currentPage == 'user' %}
+                <a href="#" >UN LIEN POUR EDITER L'ACTIVITE</a>
+            {% endif %}
+        {% endif %}
+ </div>

@@ -4,9 +4,10 @@
 
 {% block body %}
 
-    <h1>Les Activités</h1>
-    {% set currentPage = 'vitrine'%}
+    <h1>Mes Activités</h1>
+    {% set currentPage = 'user'%}
     {% for activity in activities %}
         {% include 'activites/_card.html.twig' %}
     {% endfor %}
+
 {% endblock %}

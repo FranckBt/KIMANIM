@@ -8,28 +8,28 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultFrontController extends AbstractController
 {
-    #[Route('/', name: 'app_homepage')]
+    #[Route('/', name: 'homepage')]
     public function home(): Response
     {
         return $this->render('defaultfront/home.html.twig', [
         ]);
     }
 
-    #[Route('/faq', name: 'app_faq')]
+    #[Route('/faq', name: 'faq')]
     public function faq(): Response
     {
         return $this->render('defaultfront/faq.html.twig', [
         ]);
     }
 
-    #[Route('/contact', name: 'app_contact')]
+    #[Route('/contact', name: 'contact')]
     public function contact(): Response
     {
         return $this->render('defaultfront/contact.html.twig', [
         ]);
     }
 
-    #[Route('/mentions_legales', name: 'app_mentions')]
+    #[Route('/mentions_legales', name: 'mentions')]
     public function mentions(): Response
     {
         return $this->render('defaultfront/mentions.html.twig', [
