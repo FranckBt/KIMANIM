@@ -44,8 +44,8 @@ class ActivityFrontType extends AbstractType
             ->add('status', ChoiceType::class, [
                 'choices' => [
                     'Statut Activité' => [
-                    'Brouillon' => 'Brouillon',
-                    'Publier' => 'Publier',
+                    'Projet' => 'projet',
+                    'Mettre en ligne' => 'en ligne',
                 ]]
             ])
             // ajout d'une liste nombres 1 => 10

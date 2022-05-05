@@ -1,22 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bonjour{% endblock %}
+{% block title %} - Mon Compte{% endblock %}
 
 {% block body %}
 <h1>Mon Compte</h1>
-<div>
-    <img src="{{ app.user.avatar }}">
-    <button>Changer</button>
+
+<div class="user-info">
+    <h2>Mes informations</h2>
+    <div>
+        <a href="{{ path('account_update')}}"><img src="{{ app.user.avatar }}"></a>
+    </div>
+    <div>
+        <ul>
+            <li>{{ app.user.name }}</li>
+            <li>{{ app.user.surname }}</li>
+            <li>{{ app.user.alias }}</li>
+            <li>{{ app.user.email }}</li>
+            <li>{{ app.user.bio }}</li>
+        </ul>
+        <a href="{{ path('account_update')}}">Mettre à jour</a>
+    </div>
 </div>
-<div>
-    <ul>
-        <li>{{ app.user.name }}</li>
-        <li>{{ app.user.surname }}</li>
-        <li>{{ app.user.alias }}</li>
-        <li>{{ app.user.email }}</li>
-        <li>{{ app.user.bio }}</li>
-    </ul>
-    <a href="{{ path('account_update')}}">Mettre à jour</a>
+
+{% if is_granted('ROLE_PARENT') %}
+<h2>Mes enfants</h2>
+
+{# Afficher ici la liste des enfants #}
+{% endif %}
+
+<div class="user-activities">
+    <h2>Mes activités</h2>
+    <div>
+        <p>Confirmées</p>
+        {% for activity in confirms %}
+            <div class="activity-detail">
+                <p>{{ activity.title }} / {{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
+                <a class="btn " href="#">Voir</a><a class="btn btn-second" href="#">Modifier</a>
+            </div>
+        {% endfor %}
+
+        <p>Projets</p>
+        {% for activity in projects %}
+            <div class="activity-detail">
+                <p>{{ activity.title }} / {{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
+                <a class="btn" href="#">Voir</a> <a class="btn btn-second" href="#">Modifier</a>
+            </div>
+        {% endfor %}
+    </div>
 </div>
+
+
 
 {% endblock %}

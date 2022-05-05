@@ -16,12 +16,20 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route ('/account')]
 class AccountController extends AbstractController
 {
+
     #[Route('/', name: 'account_index')]
-    public function index(): Response
+    public function index(ActivitiesRepository $activitiesRepository): Response
     {
-        // $user = $this->getUser();
+        //Récupère l'utilisateur
+        $user = $this->getUser();
+
+        $activityConfirm = $activitiesRepository->getavtivityStatus($user->getId());
+        $activityProjet = $activitiesRepository->getavtivityStatus($user->getId(), 'Projet');
+        // dd($activityProjet);
+
         return $this->render('users/profil.html.twig', [
-            // 'user' => $user,
+            'confirms' => $activityConfirm,
+            'projects' => $activityProjet
         ]);
     }
 
@@ -64,11 +72,7 @@ class AccountController extends AbstractController
     }
 
     #[Route('/show/activites', name: 'account_show_activities')]
-    public function showActivities(): Response
+    public function showActivities(ActivitiesRepository $activitiesRepository): Response
     {
-        $user = $this->getUser();
-        return $this->render('users/activites.html.twig', [
-            'activities' => $user->getActivities(),
-        ]);
     }
 }

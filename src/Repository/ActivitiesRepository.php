@@ -50,19 +50,21 @@ class ActivitiesRepository extends ServiceEntityRepository
     // /**
     //  * @return Activities[] Returns an array of Activities objects
     //  */
-    /*
-    public function findByExampleField($value)
+  
+    public function getavtivityStatus($id_user,$status = 'Confirmé')
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('a.user = :val')
+            ->andWhere('a.status = :val2')
+            ->setParameter('val', $id_user)
+            ->setParameter('val2',$status)
             ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+           // ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Activities
