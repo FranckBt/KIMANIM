@@ -2,24 +2,25 @@
 
 {% block title %}Acceuil{% endblock %}
 {% block body %}
-<main>
+<div class="hero-content">
         <div class="slideshow-container">
         <!-- Images carousel -->
             <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_1.jpg') }}" alt="icon linkedin">
+            <h2 class="hero-text">Qui nous sommes ?</h2>
+                <img src="{{ asset('assets/img/carousel_1.jpg') }}" alt="image enfant souriant">
             </div>
             <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_2.jpg') }}" alt="icon linkedin">
-            </div>
-            {# <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_3.jpg') }}" alt="icon linkedin">
+            <h2 class="hero-text">Parent</h2>
+                <img src="{{ asset('assets/img/carousel_2.1.jpg') }}" alt="image illustrant parents et enfnat">
             </div>
             <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_4.jpg') }}" alt="icon linkedin">
+            <h2 class="hero-text">Activités</h2>
+                <img src="{{ asset('assets/img/carousel_3.jpg') }}" alt="image activité pour enfant">
             </div>
             <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_5.jpg') }}" alt="icon linkedin">
-            </div> #}
+            <h2 class="hero-text">Animateur</h2>
+                <img src="{{ asset('assets/img/carousel_5.jpg') }}" alt="image animateur pour enfant">
+            </div>
         </div>
-</main>
+</div>
 {% endblock %}
