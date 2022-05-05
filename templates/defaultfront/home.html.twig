@@ -1,6 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Acceuil{% endblock %}
-
 {% block body %}
+<main>
+        <div class="slideshow-container">
+        <!-- Images carousel -->
+            <div class="slide fade">
+                <img src="{{ asset('assets/img/carousel_1.jpg') }}" alt="icon linkedin">
+            </div>
+            <div class="slide fade">
+                <img src="{{ asset('assets/img/carousel_2.jpg') }}" alt="icon linkedin">
+            </div>
+            {# <div class="slide fade">
+                <img src="{{ asset('assets/img/carousel_3.jpg') }}" alt="icon linkedin">
+            </div>
+            <div class="slide fade">
+                <img src="{{ asset('assets/img/carousel_4.jpg') }}" alt="icon linkedin">
+            </div>
+            <div class="slide fade">
+                <img src="{{ asset('assets/img/carousel_5.jpg') }}" alt="icon linkedin">
+            </div> #}
+        </div>
+</main>
 {% endblock %}

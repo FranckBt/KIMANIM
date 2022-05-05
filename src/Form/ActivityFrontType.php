@@ -21,24 +21,37 @@ class ActivityFrontType extends AbstractType
         }
 
         $builder
-            ->add('title', TextType::class, [])
             ->add('start_on', DateTimeType::class, [
-                'date_widget' => 'single_text',
-                'input' => 'datetime_immutable'
-            ])
-            ->add('adress', TextareaType::class, [])
-            ->add('city', TextType::class, [])
-            ->add('zipcode', TextType::class, [])
-            ->add('description', TextareaType::class, [])
+            'date_widget' => 'single_text',
+            'input' => 'datetime_immutable'
+        ])
+            ->add('title', TextType::class, ['attr' => [
+                'placeholder' => 'Nom activité',
+            ]])
+            
+            ->add('adress', TextareaType::class, ['attr' => [
+                'placeholder' => 'Adresse',
+            ]])
+            ->add('city', TextType::class, ['attr' => [
+                'placeholder' => 'Ville',
+            ]])
+            ->add('zipcode', TextType::class, ['attr' => [
+                'placeholder' => 'Code Postal',
+            ]])
+            ->add('description', TextareaType::class, ['attr' => [
+                'placeholder' => 'Description activité',
+            ]])
             ->add('status', ChoiceType::class, [
                 'choices' => [
+                    'Statut Activité' => [
                     'Brouillon' => 'Brouillon',
                     'Publier' => 'Publier',
-                ]
+                ]]
             ])
             // ajout d'une liste nombres 1 => 10
             ->add('minParticipants', ChoiceType::class, [
-                'choices' => $tab
+                'choices' => [
+                    'Min Participants' => $tab]
             ])
             ;
             
