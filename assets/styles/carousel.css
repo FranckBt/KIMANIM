@@ -1,7 +1,7 @@
 /* Style du Carrousel en header */
 
 
-main {
+.hero-content {
     max-width: 100%;
     max-height: 450px;
     display: flex;
@@ -13,7 +13,21 @@ main {
     overflow: hidden;
 }
 
-
+/* .slidefade {
+    display: none;
+} */
+.background-hero {
+    background-color: red;
+}
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    font-family: 'Pacifico';
+    color: white;
+    text-shadow: rgb(0, 0, 0) 2px 0 20px;
+}
 /* Le container */
 .slideshow-container {
     object-fit: cover;
