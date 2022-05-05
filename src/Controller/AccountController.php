@@ -54,7 +54,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $activity->setUser($this->getUser());
             $activityRepository->add($activity);
-            return $this->redirectToRoute('app_activites', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('activites', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('activites/new.html.twig', [
