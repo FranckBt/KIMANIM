@@ -13,11 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/users/gestion')]
 class UsersGestionController extends AbstractController
 {
-    #[Route('/', name: 'app_users_gestion_index', methods: ['GET'])]
+    #[Route('/animateur', name: 'app_users_gestion_index', methods: ['GET'])]
     public function index(UsersRepository $usersRepository): Response
     {
-        return $this->render('users_gestion/index.html.twig', [
-            'users' => $usersRepository->findAll(),
+        return $this->render('users_gestion/parentindex.html.twig', [
+            'users' => $usersRepository->findAllUser('["ROLE_ANIMATEUR"]'),
+            'titreTable' => 'Animateurs'
+        ]);
+    }
+
+    #[Route('/parent', name: 'app_users_gestion_parentindex', methods: ['GET'])]
+    public function parentindex(UsersRepository $usersRepository): Response
+    {
+        return $this->render('users_gestion/parentindex.html.twig', [
+           'users' => $usersRepository->findAllUser('["ROLE_PARENT"]'),
+            'titreTable' => 'Parents'
         ]);
     }
 
@@ -52,6 +62,7 @@ class UsersGestionController extends AbstractController
     {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->add($user);
@@ -60,7 +71,7 @@ class UsersGestionController extends AbstractController
 
         return $this->renderForm('users_gestion/edit.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'form' => $form, 
         ]);
     }
 
