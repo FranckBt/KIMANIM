@@ -64,6 +64,13 @@
 								<span>Gestion Activités</span>
 							</a>
 						</li>
+						<hr class="sidebar-divider">
+						<li class="nav-item">
+							<a class="nav-link" href={{path('app_avis_gestion_index')}}>
+								<i class="fas fa-fw fa-tachometer-alt"></i>
+								<span>Gestion des avis</span>
+							</a>
+						</li>
 						<!-- Divider -->
 						<hr
 						class="sidebar-divider">
@@ -350,6 +357,7 @@
 								{% block activites %}{% endblock %}
 								{% block showactivites %}{% endblock %}
 								{% block editactivites %}{% endblock %}
+								{% block avis %}{% endblock %}
 							</div>
 							<!-- /.container-fluid -->
 

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/activities/gestion')]
+#[Route('/admin/activities/gestion')]
 class ActivitiesGestionController extends AbstractController
 {
     #[Route('/', name: 'app_activities_gestion_index', methods: ['GET'])]
