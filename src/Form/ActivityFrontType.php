@@ -22,26 +22,38 @@ class ActivityFrontType extends AbstractType
 
         $builder
             ->add('start_on', DateTimeType::class, [
+            'label' => 'Date & Heure de l\'activité',
             'date_widget' => 'single_text',
             'input' => 'datetime_immutable'
         ])
-            ->add('title', TextType::class, ['attr' => [
-                'placeholder' => 'Nom activité',
+            ->add('title', TextType::class, [
+                'label' => FALSE,
+                'attr' => [
+                    'placeholder' => 'Nom activité',
             ]])
             
-            ->add('adress', TextareaType::class, ['attr' => [
+            ->add('adress', TextareaType::class, [
+                'label' => FALSE,
+                'attr' => [
                 'placeholder' => 'Adresse',
             ]])
-            ->add('city', TextType::class, ['attr' => [
+            ->add('city', TextType::class, [
+                'label' => FALSE,
+                'attr' => [
                 'placeholder' => 'Ville',
             ]])
-            ->add('zipcode', TextType::class, ['attr' => [
+            ->add('zipcode', TextType::class, [
+                'label' => FALSE,
+                'attr' => [
                 'placeholder' => 'Code Postal',
             ]])
-            ->add('description', TextareaType::class, ['attr' => [
+            ->add('description', TextareaType::class, [
+                'label' => FALSE,
+                'attr' => [
                 'placeholder' => 'Description activité',
             ]])
             ->add('status', ChoiceType::class, [
+                'label' => 'Statut',
                 'choices' => [
                     'Statut Activité' => [
                     'Projet' => 'projet',
@@ -50,11 +62,11 @@ class ActivityFrontType extends AbstractType
             ])
             // ajout d'une liste nombres 1 => 10
             ->add('minParticipants', ChoiceType::class, [
+                'label' => 'Minimum de participants',
                 'choices' => [
-                    'Min Participants' => $tab]
+                    'Min. Participants' => $tab]
             ])
             ;
-            
     }
 
     public function configureOptions(OptionsResolver $resolver): void
