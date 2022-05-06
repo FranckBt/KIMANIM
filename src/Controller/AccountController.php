@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Activities;
 use App\Entity\Childrens;
-use App\Form\ActivitiesType;
 use App\Form\ActivityFrontType;
 use App\Form\ChildrensFrontType;
-use App\Form\UserType;
+use App\Form\UserFrontType;
 use App\Repository\ActivitiesRepository;
 use App\Repository\ChildrensRepository;
 use App\Repository\UsersRepository;
@@ -45,7 +44,7 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserFrontType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
