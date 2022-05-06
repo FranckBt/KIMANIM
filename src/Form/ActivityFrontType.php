@@ -53,7 +53,7 @@ class ActivityFrontType extends AbstractType
             ])
             // ajout d'une liste nombres 1 => 10
             ->add('minParticipants', ChoiceType::class, [
-                'placeholder' => 'Selectionnez le nombre de participants',
+                'placeholder' => 'Nombre de participants',
                 'choices' => [
                     'Min Participants' => $tab]
             ])
