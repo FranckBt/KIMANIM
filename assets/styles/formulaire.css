@@ -68,10 +68,6 @@ select {
     transition: color .3s ease,background-color .3s ease,border-bottom-color .3s ease
 }
 
-#activity_front label {
-    display: none
-}
-
 #activity_front_start_on {
     display: flex;
     justify-content: center;
