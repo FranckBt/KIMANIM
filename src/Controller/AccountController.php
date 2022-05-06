@@ -3,17 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Activities;
-use App\Entity\Users;
+use App\Form\ActivitiesType;
 use App\Form\ActivityFrontType;
 use App\Form\UserType;
 use App\Repository\ActivitiesRepository;
 use App\Repository\UsersRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route ('/account')]
+#[Route('/account')]
 class AccountController extends AbstractController
 {
 
@@ -23,13 +24,21 @@ class AccountController extends AbstractController
         //Récupère l'utilisateur
         $user = $this->getUser();
 
-        $activityConfirm = $activitiesRepository->getavtivityStatus($user->getId());
-        $activityProjet = $activitiesRepository->getavtivityStatus($user->getId(), 'Projet');
+        $childrens = [
+            [
+                'name' => 'Jérome',
+                'age_range' => '12-16'
+            ]
+        ];
+
+        $activityPublished = $activitiesRepository->getactivityStatus($user->getId());
+        $activityProjet = $activitiesRepository->getactivityStatus($user->getId(), 'projet');
         // dd($activityProjet);
 
         return $this->render('users/profil.html.twig', [
-            'confirms' => $activityConfirm,
-            'projects' => $activityProjet
+            'published' => $activityPublished,
+            'projects' => $activityProjet,
+            'childrens' => $childrens
         ]);
     }
 
@@ -52,7 +61,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/new/activity', name: 'account_create_activity', methods: ['GET', 'POST'])]
+    #[Route('/activity/new', name: 'account_create_activity', methods: ['GET', 'POST'])]
     public function new(Request $request, ActivitiesRepository $activityRepository): Response
     {
         $activity = new Activities();
@@ -71,8 +80,34 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/show/activites', name: 'account_show_activities')]
-    public function showActivities(ActivitiesRepository $activitiesRepository): Response
+    #[Route('/activity/{id}/edit', name: 'activity_edit', methods: ['GET', 'POST'])]
+    public function editActivity(Request $request, Activities $activity, ActivitiesRepository $activitiesRepository): Response
     {
+        // renvoie une 404 si user n'a pas le rôle Animateur
+        $this->denyAccessUnlessGranted('ROLE_ANIMATEUR');
+        // $this->createAccessDeniedException();
+
+        $idUserActivity = $activity->getUser()->getId();
+        $userId = $this->getUser()->getId();
+
+        // dump($idUserActivity);
+        // dd($userId);
+
+        if($idUserActivity !== $userId) {
+            throw $this->createAccessDeniedException();
+        }
+           
+        $form = $this->createForm(ActivityFrontType::class, $activity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $activitiesRepository->add($activity);
+            return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('activites/edit.html.twig', [
+            'activity' => $activity,
+            'form' => $form,
+        ]);
     }
 }

@@ -51,7 +51,7 @@ class ActivitiesRepository extends ServiceEntityRepository
     //  * @return Activities[] Returns an array of Activities objects
     //  */
   
-    public function getavtivityStatus($id_user,$status = 'Confirmé')
+    public function getactivityStatus($id_user,$status = 'en ligne')
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.user = :val')

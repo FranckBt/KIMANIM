@@ -41,12 +41,12 @@ security:
         # Accès Pages réservées à un utilisateur
         - { path: ^/account, roles: ROLE_USER }
         # Accès Pages réservées à un type d'utilisateur
-        - { path: ^/parent, roles: ROLE_PARENT }
         - { path: ^/animateur, roles: ROLE_ANIMATEUR }
+        - { path: ^/parent, roles: ROLE_PARENT }
         
     role_hierarchy:
         ROLE_PARENT:      ROLE_USER
-        ROLE_ANIMATEUR:   ROLE_USER   
+        ROLE_ANIMATEUR:   ROLE_PARENT   
         ROLE_ADMIN:       [ROLE_ANIMATEUR, ROLE_PARENT]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 

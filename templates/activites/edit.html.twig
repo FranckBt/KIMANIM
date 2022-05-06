@@ -3,9 +3,9 @@
 {% block title %}Nouvelle Activité{% endblock %}
 
 {% block body %}
-    <h1>Ajouter une activité</h1>
+    <h1>Modifier une activité</h1>
 
-    {{ include('activites/_form.html.twig') }}
+    {{ include('activites/_form.html.twig', {'button_label': 'Modifier'}) }}
 
     <a href="{{ path('account_index') }}">Revenir aux activités</a>
 {% endblock %}
