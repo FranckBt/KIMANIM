@@ -35,6 +35,7 @@ class ChildrensFrontType extends AbstractType
                     ]
             ])
             ->add('additional', TextareaType::class, [
+                'required' => FALSE,
                 'label' => FALSE,
                 'attr' => [
                 'placeholder' => 'Informations complémentaires',

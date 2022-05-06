@@ -1,59 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} - Mon Compte{% endblock %}
+{% block title %}
+	- Mon Compte
+{% endblock %}
 
 {% block body %}
-<h1>Mon Compte</h1>
+	<h1>Mon Compte</h1>
 
-<div class="user-info">
-    <h2>Mes informations</h2>
-    <div>
-        <a href="{{ path('account_update')}}"><img src="{{ app.user.avatar }}"></a>
-    </div>
-    <div>
-        <ul>
-            <li>{{ app.user.name }}</li>
-            <li>{{ app.user.surname }}</li>
-            <li>{{ app.user.alias }}</li>
-            <li>{{ app.user.email }}</li>
-            <li>{{ app.user.bio }}</li>
-        </ul>
-        <a href="{{ path('account_update')}}">Mettre à jour</a>
-    </div>
-</div>
+	<div class="user-info">
+		<h2>Mes informations</h2>
+		<div>
+			<a href="{{ path('account_update')}}"><img src="{{ app.user.avatar }}"></a>
+		</div>
+		<div>
+			<ul>
+				<li>{{ app.user.name }}</li>
+				<li>{{ app.user.surname }}</li>
+				<li>{{ app.user.alias }}</li>
+				<li>{{ app.user.email }}</li>
+				<li>{{ app.user.bio }}</li>
+			</ul>
+			<a href="{{ path('account_update')}}">Mettre à jour</a>
+		</div>
+	</div>
 
-    {% if childrens is not empty %}
-    <h2>Mes enfants</h2>
-        {# Affiche la liste des enfants #}
-        {% for child in childrens %}
-            <p>{{ child.name }} - {{ child.ageRange }} ans</p><a class="btn btn-second" href="#">Modifier</a>
-        {% endfor %}
-    <a class="btn" href="{{path('child_create')}}">Ajouter</a>
-    {% endif %}
 
-<div class="user-activities">
-    <h2>Mes activités</h2>
-    {% if is_granted('ROLE_ANIMATEUR') %}
-        <a class="btn" href="{{ path('activity_create') }}">Ajouter</a>
-    {% endif %}
-    <div>
-        <p>Publiées</p>
-        {% for activity in published %}
-            <div class="activity-detail">
-                <p>{{ activity.title }} / {{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
-                <a class="btn " href="#">Voir</a><a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
-            </div>
-        {% endfor %}
+	<h2>Mes enfants</h2>
+	<a class="btn" href="{{path('child_create')}}">Ajouter</a>
+	{% if childrens is not empty %}
+		{# Affiche la liste des enfants #}
+		{% for child in childrens %}
+			<p>{{ child.name }}
+				-
+				{{ child.ageRange }}
+				ans
+				<a class="btn btn-second" href="{{ path('child_edit', {'id': child.id}) }}">Modifier</a>
+			</p>
 
-        <p>Projets</p>
-        {% for activity in projects %}
-            <div class="activity-detail">
-                <p>{{ activity.title }} / {{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
-                <a class="btn" href="#">Voir</a><a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
-            </div>
-        {% endfor %}
+		{% endfor %}
+	{% endif %}
 
-    </div>
-</div>
+	<div class="user-activities">
+		<h2>Mes activités</h2>
+		{% if is_granted('ROLE_ANIMATEUR') %}
+			<a class="btn" href="{{ path('activity_create') }}">Ajouter</a>
+		{% endif %}
+		<div>
+			<p>Publiées</p>
+			{% for activity in published %}
+				<div class="activity-detail">
+					<p>{{ activity.title }}
+						/
+						{{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
+					<a class="btn " href="#">Voir</a>
+					<a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
+				</div>
+			{% endfor %}
+
+			<p>Projets</p>
+			{% for activity in projects %}
+				<div class="activity-detail">
+					<p>{{ activity.title }}
+						/
+						{{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
+					<a class="btn" href="#">Voir</a>
+					<a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
 
 {% endblock %}

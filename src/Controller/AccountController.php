@@ -120,7 +120,9 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
     }
     
-    // CHILDRENS
+    //***** CHILDRENS ***** //
+
+    // Ajouter un enfant
     #[Route('/child/new', name: 'child_create', methods: ['GET', 'POST'])]
     public function newChild(Request $request, ChildrensRepository $childrensRepository): Response
     {
@@ -138,5 +140,48 @@ class AccountController extends AbstractController
             'child' => $child,
             'form' => $form,
         ]);
+    }
+
+    // Modifier un enfant
+    #[Route('/child/{id}/edit', name: 'child_edit', methods: ['GET', 'POST'])]
+    public function editChild(Request $request, Childrens $child, ChildrensRepository $childrensRepository): Response
+    {
+        // -- Vérification des droits -- //
+        // renvoie une 404 si user n'a pas le rôle Parent
+        $this->denyAccessUnlessGranted('ROLE_PARENT');
+
+        // récupère idParent de l'enfant et celle du user courant
+        $idParentChild = $child->getParent()->getId();
+        $userId = $this->getUser()->getId();
+
+        // renvoie une 404 si idParent n'est pas celui du user courant
+        if($idParentChild !== $userId) {
+            throw $this->createAccessDeniedException();
+        }
+        // ----------- //
+
+        $form = $this->createForm(ChildrensFrontType::class, $child);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $childrensRepository->add($child);
+            return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('childrens/edit.html.twig', [
+            'child' => $child,
+            'form' => $form,
+        ]);
+    }
+
+    // Supprime un enfant
+    #[Route('/child/{id}/delete', name: 'child_delete', methods: ['POST'])]
+    public function deleteChild(Request $request, Childrens $child, ChildrensRepository $childrensRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$child->getId(), $request->request->get('_token'))) {
+            $childrensRepository->remove($child);
+        }
+
+        return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
     }
 }
