@@ -3,7 +3,7 @@
 
 .hero-content {
     max-width: 100%;
-    max-height: 450px;
+    max-height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,12 +13,17 @@
     overflow: hidden;
 }
 
-/* .slidefade {
-    display: none;
-} */
-.background-hero {
-    background-color: red;
+.slide-text {
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    font-family: 'Pacifico';
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    background-color: aqua;
 }
+
 .hero-text {
     position: absolute;
     top: 50%;
@@ -69,5 +74,77 @@
 
     to {
         opacity: 1;
+    }
+}
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+
+    /* transition du bouton */
+    transition: 0.6s ease;
+    user-select: none;
+    /*interdit de selectionner un text */
+}
+
+/* posiont du bouton next a droite */
+
+.next {
+    right: 0;
+}
+
+/* ajouter un fond noir au surevol */
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* pastilles */
+
+.pastilles {
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: grey;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+
+.active.dot:hover  {
+    background-color: rgb(238, 255, 0);
+}
+
+@media screen and (max-width:500px) {
+    .hero-content {
+        max-height: 200px;
     }
 }

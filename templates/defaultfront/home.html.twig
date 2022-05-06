@@ -10,17 +10,42 @@
                 <img src="{{ asset('assets/img/carousel_1.jpg') }}" alt="image enfant souriant">
             </div>
             <div class="slide fade">
+            <div class="slide-text">
             <h2 class="hero-text">Parent</h2>
-                <img src="{{ asset('assets/img/carousel_2.1.jpg') }}" alt="image illustrant parents et enfnat">
+            </div>
+                <img src="{{ asset('assets/img/carousel_2.1.jpg') }}" alt="image illustrant parents et enfant">
             </div>
             <div class="slide fade">
             <h2 class="hero-text">Activités</h2>
                 <img src="{{ asset('assets/img/carousel_3.jpg') }}" alt="image activité pour enfant">
             </div>
             <div class="slide fade">
+                <div class="card-carousel">
             <h2 class="hero-text">Animateur</h2>
+            </div>
                 <img src="{{ asset('assets/img/carousel_5.jpg') }}" alt="image animateur pour enfant">
             </div>
+            <div class="prevNext">
+                <a class="prev" onclick="plusSlides(-1)">&#10094</a>
+                <a class="next" onclick="plusSlides(1)">&#10095</a>
+            </div>
+             <!-- pastilles rondes -->
+        <div class="pastilles">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
         </div>
+        </div>
+<div class="activity-content">
+<h2 class="activity-titles">Les dernières activitées</h2>
 </div>
+<div class="about-content">
+<h2 class="about-title">Qui sommes-nous ?</h2>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/carousel.js') }}"></script>
+
 {% endblock %}
