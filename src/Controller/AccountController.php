@@ -12,9 +12,11 @@ use App\Repository\ChildrensRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/account')]
 class AccountController extends AbstractController
@@ -40,7 +42,7 @@ class AccountController extends AbstractController
     }
 
     #[Route('/update', name: 'account_update', methods: ['GET', 'POST'])]
-    public function edit(Request $request, UsersRepository $userRepository): Response
+    public function edit(Request $request, UsersRepository $userRepository, SluggerInterface $slugger): Response
     {
         $user = $this->getUser();
 
@@ -48,6 +50,33 @@ class AccountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $avatarFile */
+            $avatarFile = $form->get('avatar')->getData();
+
+            // this condition is needed because the 'avatar' field is not required
+            // so the IMG file must be processed only when a file is uploaded
+            if ($avatarFile) {
+                $originalFilename = pathinfo($avatarFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$avatarFile->guessExtension();
+
+                // Move the file to the directory where avatars are stored
+                try {
+                    $avatarFile->move(
+                        $this->getParameter('avatars_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'avatarFilename' property to store the IMG file name
+                // instead of its contents
+                $user->setAvatarFilename($newFilename);
+            }
+
             $userRepository->add($user);
             return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -266,6 +266,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getAvatarFilename()
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatarFilename($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
     public function getBio(): ?string
     {
         return $this->bio;
