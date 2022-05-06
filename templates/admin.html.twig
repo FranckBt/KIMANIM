@@ -13,8 +13,10 @@
 
 		<!-- Custom styles for this template-->
 		<link href={{asset('back/styles/sb-admin-2.min.css')}} rel="stylesheet">
+		<link rel="icon" href={{ asset('assets/img/Kimanim_mini_logo.png') }} />
 		{{ encore_entry_link_tags('appBack') }}
 		{% block stylesheets %}{% endblock %}
+	
 	</head>
 
 	{% block body %}
@@ -76,6 +78,24 @@
 							<span>Gestion des avis</span>
 						</a>
 					</li>
+{# admin #}
+
+
+						{% if is_granted('ROLE_SUPER_ADMIN') %}
+						<hr class="sidebar-divider">
+					<li class="nav-item">
+						<a class="nav-link" href={{path('app_superadmin')}}>
+							<span>Gestion des Administrateur</span>
+						</a>
+					</li>
+						
+						{% endif %}
+
+
+{# fin admin #}
+
+
+
 					<!-- Divider -->
 					<hr
 					class="sidebar-divider">
@@ -182,12 +202,11 @@
 			<!-- Bootstrap core JavaScript-->
 			<script src={{asset('back/js/jquery.min.js')}}></script>
 			<script src={{asset('back/js/bootstrap.bundle.min.js')}}></script>
-
 			<!-- Core plugin JavaScript-->
 			<script src={{asset('back/js/jquery.easing.min.js')}}></script>
-
-			<!-- Custom scripts for all pages-->
 			<script src={{asset('back/js/sb-admin-2.min.js')}}></script>
+			<!-- Custom scripts for all pages-->
+			<script src={{asset('back/js/chart-pie-demo.js')}}></script>
 		</body>
 	</body>
 </html>
