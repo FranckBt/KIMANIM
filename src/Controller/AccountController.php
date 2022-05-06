@@ -61,7 +61,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-    #[Route('/activity/new', name: 'account_create_activity', methods: ['GET', 'POST'])]
+    #[Route('/activity/new', name: 'activity_create', methods: ['GET', 'POST'])]
     public function new(Request $request, ActivitiesRepository $activityRepository): Response
     {
         $activity = new Activities();
@@ -83,20 +83,20 @@ class AccountController extends AbstractController
     #[Route('/activity/{id}/edit', name: 'activity_edit', methods: ['GET', 'POST'])]
     public function editActivity(Request $request, Activities $activity, ActivitiesRepository $activitiesRepository): Response
     {
+        // -- Vérification des droits -- //
         // renvoie une 404 si user n'a pas le rôle Animateur
         $this->denyAccessUnlessGranted('ROLE_ANIMATEUR');
-        // $this->createAccessDeniedException();
 
+        // récupère idUser de l'activité et celle du user courant
         $idUserActivity = $activity->getUser()->getId();
         $userId = $this->getUser()->getId();
 
-        // dump($idUserActivity);
-        // dd($userId);
-
+        // renvoie une 404 si l'idUser de l'activié n'est pas celui du user courant
         if($idUserActivity !== $userId) {
             throw $this->createAccessDeniedException();
         }
-           
+        // ----------- //
+
         $form = $this->createForm(ActivityFrontType::class, $activity);
         $form->handleRequest($request);
 
@@ -109,5 +109,16 @@ class AccountController extends AbstractController
             'activity' => $activity,
             'form' => $form,
         ]);
+    }
+
+    // Supprime une activité
+    #[Route('/{id}', name: 'activity_delete', methods: ['POST'])]
+    public function deleteActivity(Request $request, Activities $activity, ActivitiesRepository $activitiesRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$activity->getId(), $request->request->get('_token'))) {
+            $activitiesRepository->remove($activity);
+        }
+
+        return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
     }
 }
