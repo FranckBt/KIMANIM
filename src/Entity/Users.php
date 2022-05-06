@@ -66,10 +66,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Activities::class)]
     private $activities;
 
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Childrens::class)]
+    private $childrens;
+
     public function __construct()
     {
         $this->setCreatedAt(new DateTimeImmutable());
         $this->activities = new ArrayCollection();
+        $this->childrens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -298,6 +302,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($activity->getUser() === $this) {
                 $activity->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Childrens>
+     */
+    public function getChildrens(): Collection
+    {
+        return $this->childrens;
+    }
+
+    public function addChildren(Childrens $children): self
+    {
+        if (!$this->childrens->contains($children)) {
+            $this->childrens[] = $children;
+            $children->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChildren(Childrens $children): self
+    {
+        if ($this->childrens->removeElement($children)) {
+            // set the owning side to null (unless already changed)
+            if ($children->getParent() === $this) {
+                $children->setParent(null);
             }
         }
 

@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Activities;
+use App\Entity\Childrens;
 use App\Form\ActivitiesType;
 use App\Form\ActivityFrontType;
+use App\Form\ChildrensFrontType;
 use App\Form\UserType;
 use App\Repository\ActivitiesRepository;
+use App\Repository\ChildrensRepository;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,16 +27,11 @@ class AccountController extends AbstractController
         //Récupère l'utilisateur
         $user = $this->getUser();
 
-        $childrens = [
-            [
-                'name' => 'Jérome',
-                'age_range' => '12-16'
-            ]
-        ];
+        // Récupère enfant(s) de l'utilisateur
+        $childrens = $user->getChildrens();
 
         $activityPublished = $activitiesRepository->getactivityStatus($user->getId());
         $activityProjet = $activitiesRepository->getactivityStatus($user->getId(), 'projet');
-        // dd($activityProjet);
 
         return $this->render('users/profil.html.twig', [
             'published' => $activityPublished,
@@ -71,7 +69,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $activity->setUser($this->getUser());
             $activityRepository->add($activity);
-            return $this->redirectToRoute('activites', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('activites/new.html.twig', [
@@ -120,5 +118,25 @@ class AccountController extends AbstractController
         }
 
         return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
+    }
+    
+    // CHILDRENS
+    #[Route('/child/new', name: 'child_create', methods: ['GET', 'POST'])]
+    public function newChild(Request $request, ChildrensRepository $childrensRepository): Response
+    {
+        $child = new Childrens();
+        $form = $this->createForm(ChildrensFrontType::class, $child);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $child->setParent($this->getUser());
+            $childrensRepository->add($child);
+            return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('childrens/new.html.twig', [
+            'child' => $child,
+            'form' => $form,
+        ]);
     }
 }

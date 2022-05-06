@@ -54,6 +54,6 @@ class UsersFixtures extends Fixture
 
         $manager->flush();
         $this->addReference('anim', $user1);
-
+        $this->addReference('parent', $user2);
     }
 }

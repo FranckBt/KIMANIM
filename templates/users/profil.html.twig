@@ -22,19 +22,20 @@
     </div>
 </div>
 
-{% if is_granted('ROLE_PARENT') %}
     {% if childrens is not empty %}
-    {% for child in childrens %}
-        <p>{{ child.name }} - {{ child.age_range }} ans</p>
-    {% endfor %}
     <h2>Mes enfants</h2>
-    <a class="btn btn-second" href="#">Ajouter</a>
+        {# Affiche la liste des enfants #}
+        {% for child in childrens %}
+            <p>{{ child.name }} - {{ child.ageRange }} ans</p><a class="btn btn-second" href="#">Modifier</a>
+        {% endfor %}
+    <a class="btn" href="{{path('child_create')}}">Ajouter</a>
     {% endif %}
-{# Afficher ici la liste des enfants #}
-{% endif %}
 
 <div class="user-activities">
     <h2>Mes activités</h2>
+    {% if is_granted('ROLE_ANIMATEUR') %}
+        <a class="btn" href="{{ path('activity_create') }}">Ajouter</a>
+    {% endif %}
     <div>
         <p>Publiées</p>
         {% for activity in published %}
@@ -51,6 +52,7 @@
                 <a class="btn" href="#">Voir</a><a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
             </div>
         {% endfor %}
+
     </div>
 </div>
 
