@@ -13,26 +13,36 @@
     overflow: hidden;
 }
 
+.btn-slide {
+    padding: 3px;
+    background-color: var(--clr-3);
+    font-weight: bold;
+    border-radius: 10px;
+    color: var(--clr-1);
+    display: inline-block;
+
+}
+p {
+    padding: .5rem;
+}
 .slide-text {
-    top: 50%;
-    left: 50%;
+    text-align: center;
+    color: white;
+    bottom: 0;
     z-index: 20;
-    font-family: 'Pacifico';
     position: absolute;
-    width: 500px;
-    height: 100px;
-    background-color: aqua;
+    width: 100%;
+    min-height: 45%;
+    background-color: hsl(194, 28%, 43%, 50%);
+    padding: 10px;
 }
 
 .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 20;
     font-family: 'Pacifico';
     color: white;
     text-shadow: rgb(0, 0, 0) 2px 0 20px;
 }
+
 /* Le container */
 .slideshow-container {
     object-fit: cover;
@@ -93,7 +103,7 @@
 .next {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 40%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
@@ -125,6 +135,7 @@
 
 .pastilles {
     text-align: center;
+    margin-top: 1rem;
 }
 
 .dot {
@@ -140,11 +151,158 @@
 
 
 .active.dot:hover  {
-    background-color: rgb(238, 255, 0);
+    background-color: var(--clr-3);
 }
 
-@media screen and (max-width:500px) {
-    .hero-content {
-        max-height: 200px;
-    }
+
+/* Carou card */
+
+:root {
+     --card-width: 80%;
+    --card-max-width: 180px;
+    --card-height: 250px;
+    --carousel-min-width: 600px;
 }
+
+.visuallyhidden {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    opacity: 0;
+    
+  }
+  
+  /* h1 {
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+  } */
+  
+  .activity-cards {
+    overflow: hidden;
+    padding: 20px;
+    margin-top: .7em;
+    /* background: rgba(255, 0, 0, 0.1) */
+  }
+  
+  .card-carousel {
+    z-index: 1;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: var(--card-height);
+    min-width: var(--carousel-min-width);
+    transition: filter .3s ease;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .card-carousel {
+      margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+    }
+  }
+  
+  .card-carousel.smooth-return {
+    transition: all .2s ease;
+  }
+  
+  .card-carousel .card {
+    background: whitesmoke;
+    width: var(--card-width);
+    max-width: var(--card-max-width);
+    text-align: center;
+    padding: 1em;
+    min-width: 250px;
+    height: var(--card-height);
+    position: absolute;
+    margin: 0 auto;
+    color: rgba(0,0,0,.5);
+    transition: inherit;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 1em;
+    filter: brightness(.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card.highlight {
+    filter: brightness(1)
+  }
+  
+  
+  .card:nth-of-type(1) .image-container {
+      background-image: url("https://static.addtoany.com/images/dracaena-cinnabari.jpg");
+  }
+   
+  .card:nth-of-type(2) .image-container {
+    background-image: url("https://www.w3schools.com/w3css/img_lights.jpg")
+  }
+  
+  .card:nth-of-type(3) .image-container {
+    background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+  }
+  .card:nth-of-type(4) .image-container {
+    background-image: url("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+  }
+  .card:nth-of-type(5) .image-container {
+    background-image: url("https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg")
+  }
+  
+  
+  
+  .image-container {
+    width: 6em;
+    height: 6em;
+    position: relative;
+    background-size: cover;
+    margin-bottom: 2em;
+    border-radius: 100%;
+    padding: 1em;
+    -webkit-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+  box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+    
+  }
+  
+  .image-container::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: solid 3px rgba(0,0,0,.1);
+    border-radius: 100%;
+    position: absolute;
+    top: calc(-1% - 2px);
+    left: calc(-1% - 2px);
+  }
+
+  /* @media (min-width: 640px) and (max-width: 50em) {
+
+  } */
+  @media screen and (min-width:708px) {
+    :root {
+     --card-width: 100%;
+    --card-max-width: 580px;
+    --card-height: 350px;
+    --carousel-min-width: 600px;
+    }
+
+    .image-container {
+        width: 10em;
+        height: 10em;
+        position: relative;
+        background-size: cover;
+        margin-bottom: 2em;
+        /* border-radius: 100%; */
+        padding: 1em;
+        -webkit-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+      -moz-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+      box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+      }
+      
+   
+    
+  }
