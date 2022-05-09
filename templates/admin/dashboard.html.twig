@@ -1,0 +1,65 @@
+{% extends 'admin.html.twig' %}
+{% block dashboard %}
+	<h2>Animateurs</h2>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Prenom</th>
+					<th>Created_at</th>
+					<th>Nom</th>
+					<th>Actif</th>
+					<th>Validate</th>
+				</tr>
+			</thead>
+            	{% for user in usersAnimateurs|slice(0, 5) %}
+			<tbody>
+				<tr>
+					<td>{{ user.surname }}</td>
+					<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.actif ? 'Yes' : 'No' }}</td>
+					<td>{{ user.validate ? 'Yes' : 'No' }}</td>
+				</tr>
+
+
+			{% else %}
+				<tr>
+					<td colspan="16">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<h2>Parents</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Prenom</th>
+				<th>Created_at</th>
+				<th>Nom</th>
+				<th>Actif</th>
+				<th>Validate</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in usersParents|slice(0, 5) %}
+
+				<tr>
+					<td>{{ user.surname }}</td>
+					<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.actif ? 'Yes' : 'No' }}</td>
+					<td>{{ user.validate ? 'Yes' : 'No' }}</td>
+				</tr>
+
+
+			{% else %}
+				<tr>
+					<td colspan="16">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

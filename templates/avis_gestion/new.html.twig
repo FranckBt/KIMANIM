@@ -1,8 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
+{% block newavis %}
 
 {% block title %}New Avis{% endblock %}
 
-{% block body %}
+
     <h1>Create new Avis</h1>
 
     {{ include('avis_gestion/_form.html.twig') }}

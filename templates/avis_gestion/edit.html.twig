@@ -1,8 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Edit Avis{% endblock %}
 
-{% block body %}
+{% block editavis %}
+
     <h1>Edit Avis</h1>
 
     {{ include('avis_gestion/_form.html.twig', {'button_label': 'Update'}) }}

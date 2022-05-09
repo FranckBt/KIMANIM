@@ -13,7 +13,6 @@ class ActivitiesType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('created_at')
             ->add('start_on')
             ->add('adress')
             ->add('city')
