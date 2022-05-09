@@ -10,7 +10,7 @@
 	<div class="user-info">
 		<h2>Mes informations</h2>
 		<div>
-			<a href="{{ path('account_update')}}"><img src="{{ app.user.avatar }}"></a>
+			<a href="{{ path('account_update')}}"><img src="{{ asset('uploads/avatars/' ~ app.user.avatar)}}"></a>
 		</div>
 		<div>
 			<ul>
