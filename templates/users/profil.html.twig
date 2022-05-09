@@ -10,7 +10,13 @@
 	<div class="user-info">
 		<h2>Mes informations</h2>
 		<div>
-			<a href="{{ path('account_update')}}"><img src="{{ asset('uploads/avatars/' ~ app.user.avatar)}}"></a>
+			<a href="{{ path('account_update')}}"><img src="
+			{% if app.user.avatar is not empty %}
+				{{ asset('uploads/avatars/' ~ app.user.avatar)}}
+			{% else %}
+				{{ asset('assets/img/avatar_test.png')}}
+			{% endif %}	
+			"></a>
 		</div>
 		<div>
 			<ul>
@@ -67,7 +73,6 @@
 					<a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
 				</div>
 			{% endfor %}
-
 		</div>
 	</div>
 

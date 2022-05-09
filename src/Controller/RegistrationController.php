@@ -27,7 +27,8 @@ class RegistrationController extends AbstractController
                     $user,
                     $form->get('plainPassword')->getData()
                 )
-            );
+            )
+            ->setActif(true);
             $myrole = $form->get('rolesPlus')->getData();
             $user->setRoles([$myrole]);
             $entityManager->persist($user);
