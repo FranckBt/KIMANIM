@@ -52,7 +52,9 @@ class UsersFixtures extends Fixture
             $user = new Users();
             $user
                 ->setSurname($faker->firstName)
+                ->setName($faker->lastName)
                 ->setEmail($faker->email)
+                ->setActif(true)
                 ->setRoles(array($faker->randomElement(["ROLE_PARENT", "ROLE_ANIMATEUR"])));
             $password = $this->hasher->hashPassword($user, '123456');
             $user->setPassword($password);
