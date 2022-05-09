@@ -6,7 +6,7 @@
             {% if activity.illustration is empty%}
             #
             {% else %}
-                {{asset(activity.illustration)}}
+                {{asset('uploads/avatars/' ~ activity.illustration)}}
             {% endif %}">
             <h2>{{ activity.title }}</h2>
         </div>

@@ -68,13 +68,18 @@ class AccountController extends AbstractController
     }
 
     #[Route('/activity/new', name: 'activity_create', methods: ['GET', 'POST'])]
-    public function new(Request $request, ActivitiesRepository $activityRepository): Response
+    public function new(Request $request, ActivitiesRepository $activityRepository, FileUploader $fileUploader): Response
     {
         $activity = new Activities();
         $form = $this->createForm(ActivityFrontType::class, $activity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $illustrationFile = $form->get('illustration')->getData();
+            if ($illustrationFile) {
+                $illustrationFileName = $fileUploader->upload($illustrationFile);
+                $activity->setIllustration($illustrationFileName);
+            }
             $activity->setUser($this->getUser());
             $activityRepository->add($activity);
             return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
