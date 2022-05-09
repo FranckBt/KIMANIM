@@ -232,3 +232,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,osx,macos,linux,windows,jetbrains
 
+public/uploads/avatars/

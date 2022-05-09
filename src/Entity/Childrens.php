@@ -22,6 +22,10 @@ class Childrens
     #[ORM\Column(type: 'string', length: 20)]
     private $age_range;
 
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'childrens')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $parent;
+
 
     public function getId(): ?int
     {
@@ -60,6 +64,18 @@ class Childrens
     public function setAgeRange(string $age_range): self
     {
         $this->age_range = $age_range;
+
+        return $this;
+    }
+
+    public function getParent(): ?Users
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?Users $parent): self
+    {
+        $this->parent = $parent;
 
         return $this;
     }
