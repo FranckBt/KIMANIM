@@ -16,7 +16,7 @@
 			<tbody>
 				<tr>
 					<td>{{ user.surname }}</td>
-					<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ user.createdAt ? user.createdAt|date('d-m-Y H:i:s') : '' }}</td>
 					<td>{{ user.name }}</td>
 					<td>{{ user.actif ? 'Yes' : 'No' }}</td>
 					<td>{{ user.validate ? 'Yes' : 'No' }}</td>
