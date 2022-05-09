@@ -36,6 +36,10 @@ label {
     display: block
 }
 
+.login {
+    margin-top: 15%;
+}
+
 input[type=password],input[type=text] {
     width: 100%;
     padding: .5rem

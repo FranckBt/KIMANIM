@@ -12,8 +12,7 @@ import './styles/app.css';
 import './bootstrap';
 
 import './js/burger';
-//import './js/carousel';
-import './styles/homepage.css'
+import './styles/activites.css'
 import './styles/carousel.css'
 import './styles/burger.css'
 import './styles/formulaire.css'

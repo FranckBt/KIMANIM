@@ -5,8 +5,10 @@
 {% block body %}
 
     <h1>Les Activités</h1>
+    <div class="activites-page">
     {% set currentPage = 'vitrine'%}
     {% for activity in activities %}
         {% include 'activites/_card.html.twig' %}
     {% endfor %}
+    </div>
 {% endblock %}
