@@ -14,7 +14,7 @@ class ChildrensFixtures extends Fixture implements DependentFixtureInterface
 
         $faker = Faker\Factory::create('fr_FR'); // create a French faker
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $child = new Childrens();
             $child
                 ->setName($faker->firstName)

@@ -20,6 +20,9 @@ class UsersFixtures extends Fixture
     {
         $user1 = (new Users())
             ->setEmail('animateur@gmail.com')
+            ->setName('TEST')
+            ->setSurname('Animateur')
+            ->setAlias('AnimTest')
             ->setRoles(array('ROLE_ANIMATEUR'));
         $password = $this->hasher->hashPassword($user1, '123456');
         $user1->setPassword($password);
@@ -27,6 +30,8 @@ class UsersFixtures extends Fixture
 
         $user2 = (new Users())
             ->setEmail('parent@gmail.com')
+            ->setName("TEST")
+            ->setSurname("Parent")
             ->setRoles(array('ROLE_PARENT'));
         $password = $this->hasher->hashPassword($user2, '123456');
         $user2->setPassword($password);
