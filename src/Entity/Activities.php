@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ActivitiesRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ActivitiesRepository::class)]
@@ -48,9 +50,13 @@ class Activities
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $illustration;
 
+    #[ORM\ManyToMany(targetEntity: Childrens::class, mappedBy: 'activity')]
+    private $childrens;
+
     public function __construct()
     {
         $this->setCreatedAt(new DateTimeImmutable());
+        $this->childrens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -186,6 +192,33 @@ class Activities
     public function setIllustration(?string $illustration): self
     {
         $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Childrens>
+     */
+    public function getChildrens(): Collection
+    {
+        return $this->childrens;
+    }
+
+    public function addChildren(Childrens $children): self
+    {
+        if (!$this->childrens->contains($children)) {
+            $this->childrens[] = $children;
+            $children->addActivity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChildren(Childrens $children): self
+    {
+        if ($this->childrens->removeElement($children)) {
+            $children->removeActivity($this);
+        }
 
         return $this;
     }

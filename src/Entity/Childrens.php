@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ChildrensRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChildrensRepository::class)]
@@ -25,6 +27,14 @@ class Childrens
     #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'childrens')]
     #[ORM\JoinColumn(nullable: false)]
     private $parent;
+
+    #[ORM\ManyToMany(targetEntity: Activities::class, inversedBy: 'childrens')]
+    private $activity;
+
+    public function __construct()
+    {
+        $this->activity = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -76,6 +86,30 @@ class Childrens
     public function setParent(?Users $parent): self
     {
         $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activities>
+     */
+    public function getActivity(): Collection
+    {
+        return $this->activity;
+    }
+
+    public function addActivity(Activities $activity): self
+    {
+        if (!$this->activity->contains($activity)) {
+            $this->activity[] = $activity;
+        }
+
+        return $this;
+    }
+
+    public function removeActivity(Activities $activity): self
+    {
+        $this->activity->removeElement($activity);
 
         return $this;
     }
