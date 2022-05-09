@@ -13,9 +13,25 @@
     padding-bottom: 1rem;
 }
 .about-content {
+    padding: 3rem;
     height: 300px;
+    display: flex;
+    justify-content: center;
+}
+.about-illustration {
+    width: 20%;
 }
 
+.about-illustration img {
+    border-radius: 30%;
+    border: 3px solid var(--clr-1);
+}
+
+.about-description {
+    width: 50%;
+    margin-left: 3rem;
+    text-align: center;
+}
 .about-title {
     text-align: center;
 }

@@ -279,45 +279,45 @@ p {
     left: calc(-1% - 2px);
   }
 
-  /* @media (min-width: 640px) and (max-width: 50em) {
-
-  } */
   @media screen and (min-width:708px) {
-    /* :root {
-     --card-width: 100%;
-    --card-max-width: 580px;
-    --card-height: 350px;
-    --carousel-min-width: 600px;
-    }
 
-    .image-container {
-        width: 10em;
-        height: 10em;
-        position: relative;
-        background-size: cover;
-        margin-bottom: 2em;
-        padding: 1em;
-        -webkit-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
-      -moz-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
-      box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
-      }
-       */
-   
     .card-carousel {
       display: none;
     }
     .Resize-card {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
     }
 
     .card-1 {
-      width: 33%;
+      width: 23%;
+      border: solid 3px var(--clr-1);
+      border-radius: 10%;
+      padding: .5rem;
+      background-color: var(--clr-3);
+    }
+
+    .activity-title {
+      font-weight: bold;
+      font-size: x-large;
+      color: var(--clr-1);
+    }
+
+    .description-text {
+      font-style: italic;
+      color: var(--clr-2);
     }
 
     .card-desktop {
       display: flex;
       flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      /* border: solid 2px red; */
+      gap: 1rem;
+      padding-bottom: 2rem;
     }
   }
 
