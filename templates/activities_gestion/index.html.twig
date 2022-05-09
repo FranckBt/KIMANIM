@@ -12,7 +12,6 @@
 			<tr>
 				<th>Id</th>
 				<th>Description</th>
-				<th>Created_at</th>
 				<th>Start_on</th>
 				<th>Adress</th>
 				<th>City</th>
@@ -28,7 +27,6 @@
 				<tr>
 					<td>{{ activity.id }}</td>
 					<td>{{ activity.description }}</td>
-					<td>{{ activity.createdAt ? activity.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 					<td>{{ activity.startOn ? activity.startOn|date('Y-m-d H:i:s') : '' }}</td>
 					<td>{{ activity.adress }}</td>
 					<td>{{ activity.city }}</td>

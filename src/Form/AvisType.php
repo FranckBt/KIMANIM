@@ -12,7 +12,6 @@ class AvisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('created_at')
             ->add('text')
             ->add('rate')
         ;

@@ -97,14 +97,14 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
     {
         if (!$roles) {
             $query = $this->createQueryBuilder('u')
-                ->orderBy('u.created_at', 'ASC')
+                ->orderBy('u.created_at', 'DESC')
             ;
             return $query->getQuery()->getResult();
         }else {
             $query = $this->createQueryBuilder('u')
                 ->where('u.roles LIKE :val')
                 ->setParameter('val', $roles)
-                ->orderBy('u.created_at', 'ASC')
+                ->orderBy('u.created_at', 'DESC')
             ;
             return $query->getQuery()->getResult();
         }

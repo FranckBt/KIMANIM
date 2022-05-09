@@ -39,9 +39,16 @@ class UsersFixtures extends Fixture
         $user3->setPassword($password);
         $manager->persist($user3);
 
+        $user4 = (new Users())
+            ->setEmail('superadmin@gmail.com')
+            ->setRoles(array('ROLE_SUPER_ADMIN'));
+        $password = $this->hasher->hashPassword($user4, '123456');
+        $user4->setPassword($password);
+        $manager->persist($user4);
+
         $faker = Faker\Factory::create('fr_FR'); // create a French faker
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $user = new Users();
             $user
                 ->setSurname($faker->firstName)
@@ -54,6 +61,6 @@ class UsersFixtures extends Fixture
 
         $manager->flush();
         $this->addReference('anim', $user1);
-
+        $this->addReference('parent', $user2);
     }
 }
