@@ -7,14 +7,34 @@
     box-sizing: border-box
 }
 
+:root {
+    --clr-1: #44638a;
+    --clr-2: #4e7e8c;
+    --clr-3: #e9cf2a;
+    --clr-4: #d3d3d3;
+  }
+
+
+img {
+    width: 100%;
+}
 h1 {
     font-family: 'Pacifico';
     text-align: center;
-    color: #44638a;
+    color: var(--clr-1);
     padding: 1%;
 }
-a,footer {
-    color: #44638a
+
+h2 {
+    color: var(--clr-1);
+}
+
+.mb1 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+a, footer {
+    color: var(--clr-1)
 }
 
 a {
@@ -34,17 +54,19 @@ body {
     min-height: 80vh;
 }
 header {
-    background-color: #4e7e8c
+    background-color: #4e7e8c;
+    font-family: 'Pacifico';
 }
 
-header nav ul li a:visited {
-    color: #fff
+header nav ul li a {
+    color: #fff;
+    padding: 10px;
+
 }
 
 header nav ul li a:hover {
-    color: #44638a;
+    color: var(--clr-1);
     background-color: #e8cf49;
-    padding: 10px;
     border-radius: 5px;
     font-weight: 700;
     box-shadow: 10px 5px 5px #03035e
@@ -52,11 +74,10 @@ header nav ul li a:hover {
 
 header nav ul li a:active {
     color: #fff;
-    background-color: #e8cf49
 }
 
 footer {
-    background-color: #e9cf2a;
+    background-color: var(--clr-3);
     font-family: "Roboto",sans-serif;
     position: absolute;
     text-align: center;
@@ -111,6 +132,10 @@ header nav ul {
     display: none
 }
 
+.mentions-legales {
+    margin: 1rem;
+}
+
 @media screen and (min-width:993px) {
     .logo {
         margin: auto;
@@ -126,7 +151,6 @@ header nav ul {
         display: flex;
         max-height: 100%;
         max-width: 100%;
-        font-family: "Pacifico";
         font-size: x-large
     }
 
@@ -142,7 +166,6 @@ header nav ul {
     nav {
         width: 70%;
         margin-top: 1em;
-        margin-bottom: 1em
     }
 
     footer,footer img {
@@ -181,17 +204,12 @@ header nav ul {
     header {
         max-height: 100%;
         max-width: 100%;
-        font-family: "Pacifico";
         font-size: large
     }
 
     header nav ul,nav {
         width: 100%;
         justify-content: center
-    }
-
-    nav {
-        margin-bottom: 1em
     }
 
     footer,footer img {
@@ -232,7 +250,6 @@ header nav ul {
     header {
         max-height: 100%;
         max-width: 100%;
-        font-family: "Pacifico";
         font-size: large
     }
 
@@ -244,10 +261,6 @@ header nav ul {
     header nav ul {
         display: flex;
         gap: 1rem
-    }
-
-    nav {
-        margin-bottom: 1em
     }
 
     footer,footer img {

@@ -15,8 +15,7 @@
 		{{ encore_entry_link_tags('app') }}
 		{% block stylesheets %}{% endblock %}
 
-		{{ encore_entry_script_tags('app') }}
-		{% block javascripts %}{% endblock %}
+		
 	</head>
 	<body>
 		<header>
@@ -118,4 +117,7 @@
 				<p class="copyright">&copy Kimanim 2022</p>
 			</footer>
 		</body>
+
+		{{ encore_entry_script_tags('app') }}
+		{% block javascripts %}{% endblock %}
 	</html>

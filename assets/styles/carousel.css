@@ -1,9 +1,9 @@
 /* Style du Carrousel en header */
 
 
-main {
+.hero-content {
     max-width: 100%;
-    max-height: 450px;
+    max-height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,6 +13,35 @@ main {
     overflow: hidden;
 }
 
+.btn-slide {
+    padding: 3px;
+    background-color: var(--clr-3);
+    font-weight: bold;
+    border-radius: 10px;
+    color: var(--clr-1);
+    display: inline-block;
+
+}
+p {
+    padding: .5rem;
+}
+.slide-text {
+    text-align: center;
+    color: white;
+    bottom: 0;
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    min-height: 45%;
+    background-color: hsl(194, 28%, 43%, 50%);
+    padding: 10px;
+}
+
+.hero-text {
+    font-family: 'Pacifico';
+    color: white;
+    text-shadow: rgb(0, 0, 0) 2px 0 20px;
+}
 
 /* Le container */
 .slideshow-container {
@@ -57,3 +86,247 @@ main {
         opacity: 1;
     }
 }
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+
+    /* transition du bouton */
+    transition: 0.6s ease;
+    user-select: none;
+    /*interdit de selectionner un text */
+}
+
+/* posiont du bouton next a droite */
+
+.next {
+    right: 0;
+}
+
+/* ajouter un fond noir au surevol */
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* pastilles */
+
+.pastilles {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: grey;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+
+.active.dot:hover  {
+    background-color: var(--clr-3);
+}
+
+
+/* Carou card */
+
+:root {
+     --card-width: 80%;
+    --card-max-width: 180px;
+    --card-height: 250px;
+    --carousel-min-width: 600px;
+}
+
+.visuallyhidden {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    opacity: 0;
+    
+  }
+  
+  /* h1 {
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+  } */
+  
+  .activity-cards {
+    overflow: hidden;
+    padding: 20px;
+    margin-top: .7em;
+    /* background: rgba(255, 0, 0, 0.1) */
+  }
+  
+  .card-carousel {
+    z-index: 1;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: var(--card-height);
+    min-width: var(--carousel-min-width);
+    transition: filter .3s ease;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .card-carousel {
+      margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+    }
+  }
+  
+  .card-carousel.smooth-return {
+    transition: all .2s ease;
+  }
+  
+  .card-carousel .card {
+    background: whitesmoke;
+    width: var(--card-width);
+    max-width: var(--card-max-width);
+    text-align: center;
+    padding: 1em;
+    min-width: 250px;
+    height: var(--card-height);
+    position: absolute;
+    margin: 0 auto;
+    color: rgba(0,0,0,.5);
+    transition: inherit;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 1em;
+    filter: brightness(.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card.highlight {
+    filter: brightness(1)
+  }
+  
+/*   
+  .card:nth-of-type(1) .image-container {
+    background-image: url("https://static.addtoany.com/images/dracaena-cinnabari.jpg");
+  }
+   
+  .card:nth-of-type(2) .image-container {
+    background-image: url("https://www.w3schools.com/w3css/img_lights.jpg")
+  }
+  
+  .card:nth-of-type(3) .image-container {
+    background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+  }
+  .card:nth-of-type(4) .image-container {
+    background-image: url("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+  }
+  .card:nth-of-type(5) .image-container {
+    background-image: url("https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg")
+  }
+   */
+  
+  
+  .image-container {
+    width: 6em;
+    height: 6em;
+    position: relative;
+    background-size: cover;
+    margin-bottom: 2em;
+    border-radius: 100%;
+    padding: 1em;
+    -webkit-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+  box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+    
+  }
+  
+  .image-container::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: solid 3px rgba(0,0,0,.1);
+    border-radius: 100%;
+    position: absolute;
+    top: calc(-1% - 2px);
+    left: calc(-1% - 2px);
+  }
+
+  @media screen and (min-width:708px) {
+
+    .card-carousel {
+      display: none;
+    }
+    .Resize-card {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    .card-1 {
+      width: 23%;
+      border: solid 3px var(--clr-1);
+      border-radius: 10%;
+      padding: .5rem;
+      background-color: var(--clr-3);
+    }
+
+    .activity-title {
+      font-weight: bold;
+      font-size: x-large;
+      color: var(--clr-1);
+    }
+
+    .description-text {
+      font-style: italic;
+      color: var(--clr-2);
+    }
+
+    .card-desktop {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      /* border: solid 2px red; */
+      gap: 1rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  @media screen and (max-width:500px) {
+    .card-desktop {
+      display: none;
+    }
+    .card-carousel {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    } 
+  }

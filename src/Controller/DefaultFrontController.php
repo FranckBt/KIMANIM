@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ActivitiesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,9 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultFrontController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function home(): Response
+    public function home(ActivitiesRepository $activitiesRepository): Response
     {
         return $this->render('defaultfront/home.html.twig', [
+            'activities' => $activitiesRepository->findBy(
+                ['status' => 'Confirmé'],
+                ['start_on' => 'DESC']
+                )
         ]);
     }
 

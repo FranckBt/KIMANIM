@@ -1,25 +1,118 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Acceuil{% endblock %}
+{% block title %}Acceuil
+{% endblock %}
 {% block body %}
-<main>
-        <div class="slideshow-container">
-        <!-- Images carousel -->
-            <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_1.jpg') }}" alt="icon linkedin">
-            </div>
-            <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_2.jpg') }}" alt="icon linkedin">
-            </div>
-            {# <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_3.jpg') }}" alt="icon linkedin">
-            </div>
-            <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_4.jpg') }}" alt="icon linkedin">
-            </div>
-            <div class="slide fade">
-                <img src="{{ asset('assets/img/carousel_5.jpg') }}" alt="icon linkedin">
-            </div> #}
-        </div>
-</main>
+	<div class="hero-content">
+		<div
+			class="slideshow-container">
+			<!-- Images carousel -->
+			<div class="slide fade">
+				<div class="slide-text">
+					<h2 class="hero-text">Qui nous sommes ?</h2>
+					<p>Kimanim est un site reliant les animateurs et les enfants pour faire des activités</p>
+					<a class="a-carousel btn-slide" href="{{path('contact')}}">En savoir plus</a>
+				</div>
+				<img src="{{ asset('assets/img/carousel_1.jpg') }}" alt="image enfant souriant">
+			</div>
+			<div class="slide fade">
+				<div class="slide-text">
+					<h2 class="hero-text">Parent</h2>
+					<p>Vous êtes parent et vous voulez trouver une activité pour votre enfant ?</p>
+					<a class="a-carousel btn-slide" href="{{path('register')}}">Inscrivez-vous</a>
+				</div>
+				<img src="{{ asset('assets/img/carousel_2.1.jpg') }}" alt="image illustrant parents et enfant">
+			</div>
+			<div class="slide fade">
+				<div class="slide-text">
+					<h2 class="hero-text">Activités</h2>
+					<p>Venez découvrir nos prochaines ainsi que nos dernières activités</p>
+					<a class="a-carousel btn-slide" href="{{path('activites')}}">Découvrir les activitées</a>
+
+				</div>
+				<img src="{{ asset('assets/img/carousel_3.jpg') }}" alt="image activité pour enfant">
+			</div>
+			<div class="slide fade">
+				<div class="slide-text">
+					<h2 class="hero-text">Animateur</h2>
+					<p>Vous êtes animateur pour enfants et désirez nous rejoindre ?</p>
+					<a class="a-carousel btn-slide" href="{{path('register')}}">Inscrivez-vous</a>
+				</div>
+				<img src="{{ asset('assets/img/carousel_5.jpg') }}" alt="image animateur pour enfant">
+			</div>
+			<div class="prevNext">
+				<a class="prev" onclick="plusSlides(-1)">&#10094</a>
+				<a class="next" onclick="plusSlides(1)">&#10095</a>
+			</div>
+		</div>
+	</div>
+	<!-- pastilles rondes -->
+	<div class="pastilles">
+		<span class="dot" onclick="currentSlide(1)"></span>
+		<span class="dot" onclick="currentSlide(2)"></span>
+		<span class="dot" onclick="currentSlide(3)"></span>
+		<span class="dot" onclick="currentSlide(4)"></span>
+	</div>
+
+	{# <div class="activity-content"> #}
+	<div class="activity-cards">
+		<h2 class="activity-titles">Les activitées à venir</h2>
+		<div class="card-carousel">
+
+          
+			{% for activity in activities %}
+
+				<div class="card">
+					<div class="image-container">
+						<img src={{ asset(activity.illustration) }} alt="photo activité">
+					</div>
+					<p>
+						{{ activity.title }}
+					</p>
+					<p>
+						{{ activity.description }}
+					</p>
+                </div>
+			{% endfor %}
+			<a href="#" class="visuallyhidden card-controller">Carousel controller</a>
+		</div>
+		<!-- 
+			<h2>Check out <a target="_blank" href="https://codepen.io/WillyW/pen/RwRrvjv">Circle Carousel</a></h2> -->
+
+
+	</div>
+	{# </div> #}
+        <div class="card-desktop">
+        {% for activity in activities|slice(0,4) %}
+
+				<div class="card-1">
+						<img src={{ asset(activity.illustration) }} alt="photo activité" class="Resize-card">
+					<p class="activity-title">
+						{{ activity.title }}
+					</p>
+					<p class="description-text">
+						{{ activity.description |slice(0, 100) }}
+					</p>
+                </div>
+			{% endfor %}
+    
+         </div>
+
+<h2 class="about-title">Qui sommes-nous ?</h2>
+	
+	<div class="about-content">
+		<div class="about-illustration">
+		<img src="{{ asset('assets/img/About_Kimanim.png') }}" alt="photo">
+		</div>
+		<div class="about-description">
+		<p>Que l’on soit parents ou grands-parents, nous sommes nombreux à rechercher des activités pour stimuler nos enfants ou petits-enfants alors qu’ils sont, nous le savons tous, très attirés par la télévision ou les consoles. 
+		De là est née la motivation de créer un site riche en animations diverses visant à contribuer au développement de nos petits.
+		Kimanim, qui a vu le jour en 2022 est donc une plateforme permettant de relier des animateurs et des parents afin de proposer une activité pour leur enfants. 
+		</p>
+		</div>
+
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('assets/js/carousel.js') }}"></script>
 {% endblock %}

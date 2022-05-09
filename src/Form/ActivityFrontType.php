@@ -55,6 +55,7 @@ class ActivityFrontType extends AbstractType
                 'placeholder' => 'Description activité',
             ]])
             ->add('status', ChoiceType::class, [
+                'placeholder' => 'Veuillez sélectionner un statut',
                 'label' => 'Statut',
                 'choices' => [
                     'Statut Activité' => [
@@ -64,6 +65,7 @@ class ActivityFrontType extends AbstractType
             ])
             // ajout d'une liste nombres 1 => 10
             ->add('minParticipants', ChoiceType::class, [
+                'placeholder' => 'Nombre de participants',
                 'label' => 'Minimum de participants',
                 'choices' => [
                     'Min. Participants' => $tab]
