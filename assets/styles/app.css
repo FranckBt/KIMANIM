@@ -51,8 +51,8 @@ body {
 }
 .container{
     /* margin-top: 1rem; */
-    margin-bottom: 2rem;
-    min-height: 70vh;
+    /* margin-bottom: 2rem; */
+    /* min-height: 70vh; */
     position: relative;
 }
 header {

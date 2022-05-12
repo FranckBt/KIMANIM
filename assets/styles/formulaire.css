@@ -16,7 +16,8 @@ form {
     border-radius: 10px;
     background-color: var(--clr-3);
     padding: .5em;
-    text-align: center
+    text-align: center;
+    margin-bottom: 20%;
 }
 
 .btn-submit,select {
@@ -37,7 +38,8 @@ label {
 }
 
 .login {
-    margin-top: 15%;
+    margin-top: 10%;
+    margin-bottom: 30%;
 }
 
 input[type=password],input[type=text] {
