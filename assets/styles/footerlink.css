@@ -1,0 +1,34 @@
+.contact-page {
+    text-align: center;
+}
+
+.link-contact {
+    margin-top: 5%;
+    font-weight: 500;
+    font-size: large;
+}
+
+.contact-logo {
+    margin-top: 10%;
+}
+.contact-logo img {
+    width: 30%;
+}
+
+.faq-content {
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 5%;
+}
+
+.return-account {
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+.return-account a {
+    border: solid 2px var(--clr-2);
+    background-color: var(--clr-2);
+    padding: 10px;
+    color: white;
+}

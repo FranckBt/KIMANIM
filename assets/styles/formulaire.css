@@ -34,12 +34,17 @@ form {
 }
 
 label {
-    display: block
+    display: block;
+    padding: .4rem;
 }
 
 .login {
     margin-top: 10%;
     margin-bottom: 30%;
+}
+
+input[type=file] {
+    padding: .8rem;
 }
 
 input[type=password],input[type=text] {
@@ -102,7 +107,6 @@ select {
 }
 
 input::placeholder,textarea::placeholder {
-    text-align: center;
     padding: .5rem
 }
 
@@ -134,10 +138,13 @@ select:focus~.select-icon svg.icon,select:hover~.select-icon svg.icon {
     fill: #17006a
 }
 
+
 textarea {
     width: 100%;
-    resize: none;
+    /* resize: none; */
     padding: .5rem;
+    min-height: 50px;
+    resize: vertical;
 }
 
 .title-register {
