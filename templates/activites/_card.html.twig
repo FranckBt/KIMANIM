@@ -35,21 +35,18 @@
             <p>{{ activity.description }}</p>
         </div>
 
-
-
         <ul class="ulcenter bouton-acti">
             {# Si non enregistré redirection vers Login
             sinon vers formulaire d'enregistrement enfants participants #}
-            <li><a class="card-btn" href="
-            {% if app.user %}
-            # {# {{ path('register_kid')}} #}
-            {% else %}
-                {{ path('login')}}
-            {% endif %}
-            ">S'inscrire</a>
+            <li>                {% if app.user %}
+                <a class="card-btn" href="{{ path('link_activity_to_children', {id:activity.id}) }}">Participer</a>
+                {% else %}
+                    <a class="card-btn" href="">S'inscrire</a>
+                {% endif %}
             </li>
         </ul>
+
             {% if currentPage == 'user' %}
-                <a href="#" >UN LIEN POUR EDITER L'ACTIVITE</a>
+                <a href="" >UN LIEN POUR EDITER L'ACTIVITE</a>
             {% endif %}
  </div>

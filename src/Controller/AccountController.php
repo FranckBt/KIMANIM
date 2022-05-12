@@ -6,6 +6,7 @@ use App\Entity\Activities;
 use App\Entity\Childrens;
 use App\Form\ActivityFrontType;
 use App\Form\ChildrensFrontType;
+use App\Form\LinkActivityType;
 use App\Form\UserFrontType;
 use App\Repository\ActivitiesRepository;
 use App\Repository\ChildrensRepository;
@@ -196,5 +197,23 @@ class AccountController extends AbstractController
         }
 
         return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    #[Route('/link_activity/{id}/tochildren', name: 'link_activity_to_children', methods: ['GET', 'POST'])]
+    public function linkActivity(Request $request, Activities $activity, ActivitiesRepository $activitiesRepository): Response
+    {
+        $user = $this->getUser();
+        $this->denyAccessUnlessGranted('ROLE_PARENT');
+        $form = $this->createForm(LinkActivityType::class, $activity,['iduser' => $user->getId()]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $activitiesRepository->add($activity);
+            return $this->redirectToRoute('account_index', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->renderForm('users/link_activity.html.twig', [
+            'form' => $form,
+            'activity' => $activity,
+        ]);
     }
 }
