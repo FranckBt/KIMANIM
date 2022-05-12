@@ -2,24 +2,29 @@
 {% block dashboard %}
 	<h2>Animateurs</h2>
 
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Prenom</th>
-					<th>Created_at</th>
-					<th>Nom</th>
-					<th>Actif</th>
-					<th>Validate</th>
-				</tr>
-			</thead>
-            	{% for user in usersAnimateurs|slice(0, 5) %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Prénom</th>
+				<th>Nom</th>
+				<th>Créé le</th>
+				<th>Actif</th>
+				<th>Valide</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		{% for user in usersAnimateurs|slice(0, 5) %}
 			<tbody>
 				<tr>
 					<td>{{ user.surname }}</td>
-					<td>{{ user.createdAt ? user.createdAt|date('d-m-Y H:i:s') : '' }}</td>
 					<td>{{ user.name }}</td>
+					<td>{{ user.createdAt ? user.createdAt|date('d-M-Y H:i:s') : '' }}</td>
 					<td>{{ user.actif ? 'Yes' : 'No' }}</td>
 					<td>{{ user.validate ? 'Yes' : 'No' }}</td>
+					<td>
+						<a href="{{ path('app_users_gestion_show', {'id': user.id}) }}">Aperçu</a>
+						<a href="{{ path('app_users_gestion_edit', {'id': user.id}) }}">| Edition</a>
+					</td>
 				</tr>
 
 
@@ -35,11 +40,13 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Prenom</th>
-				<th>Created_at</th>
+				<th>Prénom</th>
 				<th>Nom</th>
+				<th>Créé le</th>
 				<th>Actif</th>
-				<th>Validate</th>
+				<th>Valide</th>
+				<th>Actions</th>
+
 			</tr>
 		</thead>
 		<tbody>
@@ -47,10 +54,14 @@
 
 				<tr>
 					<td>{{ user.surname }}</td>
-					<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 					<td>{{ user.name }}</td>
+					<td>{{ user.createdAt ? user.createdAt|date('d-M-Y H:i:s') : '' }}</td>
 					<td>{{ user.actif ? 'Yes' : 'No' }}</td>
 					<td>{{ user.validate ? 'Yes' : 'No' }}</td>
+					<td>
+						<a href="{{ path('app_users_gestion_show', {'id': user.id}) }}">Aperçu</a>
+						<a href="{{ path('app_users_gestion_edit', {'id': user.id}) }}">| Edition</a>
+					</td>
 				</tr>
 
 
