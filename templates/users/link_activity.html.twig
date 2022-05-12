@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Participer à une activité{% endblock %}
+
+{% block body %}
+    <div class="wrap">
+        <h1>{{activity.title}}</h1>
+        <p>Activité prévue pour le: {{ activity.startOn | date("d-m-Y à H:m", "Europe/Paris") }}<p>
+    </div>
+    {{ form_start(form) }}
+    <h2>Quels enfants participeront à cette activité&nbsp?</h2>
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Ajouter') }}</button>
+    {{ form_end(form) }}
+{% endblock %}

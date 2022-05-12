@@ -32,15 +32,13 @@
             <div class="bouton-acti">
                 {# Si non enregistré redirection vers Login
                 sinon vers formulaire d'enregistrement enfants participants #}
-                <a class="card-btn" href="
                 {% if app.user %}
-                # {# {{ path('register_kid')}} #}
+                <a class="card-btn" href="{{ path('link_activity_to_children', {id:activity.id}) }}">Participer</a>
                 {% else %}
-                    {{ path('login')}}
+                    <a class="card-btn" href="">S'inscrire</a>
                 {% endif %}
-                ">S'inscrire</a>
             </div>
             {% if currentPage == 'user' %}
-                <a href="#" >UN LIEN POUR EDITER L'ACTIVITE</a>
+                <a href="" >UN LIEN POUR EDITER L'ACTIVITE</a>
             {% endif %}
  </div>
