@@ -1,45 +1,54 @@
 <div class="card">
         <div class="card-title">
             <h2 class="title-act">{{ activity.title }} - {{ activity.city }}</h2> 
-            <div class="avatar-icon">                    
-                 <img src="
-                {% if activity.user.avatar is empty%}
-                    {{ asset('/assets/img/avatar_test.png')}}
-                {% else %}
-                    {{ asset('/uploads/avatars/' ~ activity.user.avatar)}}
-                {% endif %}"
-                >
-                </div>
-            </div>
-        
+        </div>
+    
         <div class="card-details">
             <div class="acti-illustration">
-            <p>Le {{ activity.startOn | date("d-m-Y à H:m", "Europe/Paris") }}</p>
-                <img src="
-                {% if activity.illustration is empty%}
-                    {{ asset('/assets/img/activite_test.png')}}
-                {% else %}
-                    {{ asset('/uploads/avatars/' ~ activity.illustration)}}
-                {% endif %}"
-                >
+                
+                    <img src="
+                    {% if activity.illustration is empty%}
+                        {{ asset('/assets/img/activite_test.png')}}
+                    {% else %}
+                        {{ asset('/uploads/avatars/' ~ activity.illustration)}}
+                    {% endif %}"
+                    >
             </div>
             <div class="acti-text">
-            {# Lien vers profil de l'animateur avec son avatar#}
-            <span>Animé par : {{ activity.user.name }}</span>
+                {# Lien vers profil de l'animateur avec son avatar#}
+                <div class="avatar-icon">  
+                    <span>Animé par : {{ activity.user.name }}</span>
+
+                    <div>        
+                    {% if activity.user.avatar is empty%}
+                        <img src="{{ asset('/assets/img/avatar_test.png') }}"/>
+                    {% else %}
+                        <img src="{{ asset('/uploads/avatars/' ~ activity.user.avatar) }}" />
+                    {% endif %}
+                    </div>  
+                </div>  
+                <p>Le {{ activity.startOn | date("d-m-Y à H:m", "Europe/Paris") }}</p>
+        
+            
+                
+            </div>
             <p>{{ activity.description }}</p>
-            </div>
         </div>
-            <div class="bouton-acti">
-                {# Si non enregistré redirection vers Login
-                sinon vers formulaire d'enregistrement enfants participants #}
-                <a class="card-btn" href="
-                {% if app.user %}
-                # {# {{ path('register_kid')}} #}
-                {% else %}
-                    {{ path('login')}}
-                {% endif %}
-                ">S'inscrire</a>
-            </div>
+
+
+
+        <ul class="ulcenter bouton-acti">
+            {# Si non enregistré redirection vers Login
+            sinon vers formulaire d'enregistrement enfants participants #}
+            <li><a class="card-btn" href="
+            {% if app.user %}
+            # {# {{ path('register_kid')}} #}
+            {% else %}
+                {{ path('login')}}
+            {% endif %}
+            ">S'inscrire</a>
+            </li>
+        </ul>
             {% if currentPage == 'user' %}
                 <a href="#" >UN LIEN POUR EDITER L'ACTIVITE</a>
             {% endif %}

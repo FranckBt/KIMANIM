@@ -18,4 +18,5 @@ import './styles/activites.css'
 import './styles/carousel.css'
 import './styles/burger.css'
 import './styles/formulaire.css'
+import './styles/footerlink.css'
 

@@ -33,7 +33,7 @@
 
 	<h2 class="account-title">Mes enfants</h2>
 	<div class="childrens-type">
-		<a class="btn" href="{{path('child_create')}}">Ajouter</a>
+		<a class="btn-account" href="{{path('child_create')}}">Ajouter</a>
 			{% if childrens is not empty %}
 			{# Affiche la liste des enfants #}
 			{% for child in childrens %}
@@ -41,7 +41,7 @@
 				-
 				{{ child.ageRange }}
 				ans
-				<a class="btn btn-second" href="{{ path('child_edit', {'id': child.id}) }}">Modifier</a>
+				<a class="btn-account btn-second" href="{{ path('child_edit', {'id': child.id}) }}">Modifier</a>
 			</p>
 	</div>
 		{% endfor %}
@@ -50,7 +50,7 @@
 	<div class="user-activities">
 		<h2 class="account-title">Mes activités</h2>
 		{% if is_granted('ROLE_ANIMATEUR') %}
-			<a class="btn" href="{{ path('activity_create') }}">Ajouter</a>
+			<a class="btn-account" href="{{ path('activity_create') }}">Ajouter</a>
 		{% endif %}
 		<div>
 			<p>Publiées</p>
@@ -59,8 +59,8 @@
 					<p>{{ activity.title }}
 						/
 						{{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
-					<a class="btn " href="#">Voir</a>
-					<a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
+					<a class="btn-account " href="#">Voir</a>
+					<a class="btn-account btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
 				</div>
 			{% endfor %}
 
@@ -70,8 +70,8 @@
 					<p>{{ activity.title }}
 						/
 						{{ activity.startOn | date("d-m-Y", "Europe/Paris") }}</p>
-					<a class="btn" href="#">Voir</a>
-					<a class="btn btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
+					<a class="btn-account" href="#">Voir</a>
+					<a class="btn-account btn-second" href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
 				</div>
 			{% endfor %}
 		</div>
