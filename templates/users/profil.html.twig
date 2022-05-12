@@ -6,10 +6,10 @@
 
 {% block body %}
 	<h1>Mon Compte</h1>
+		<h2 class="account-title">Mes informations</h2>
 
 	<div class="user-info">
-		<h2>Mes informations</h2>
-		<div>
+		<div class="account-avatar">
 			<a href="{{ path('account_update')}}"><img src="
 			{% if app.user.avatar is not empty %}
 				{{ asset('uploads/avatars/' ~ app.user.avatar)}}
@@ -31,23 +31,24 @@
 	</div>
 
 
-	<h2>Mes enfants</h2>
-	<a class="btn" href="{{path('child_create')}}">Ajouter</a>
-	{% if childrens is not empty %}
-		{# Affiche la liste des enfants #}
-		{% for child in childrens %}
-			<p>{{ child.name }}
+	<h2 class="account-title">Mes enfants</h2>
+	<div class="childrens-type">
+		<a class="btn" href="{{path('child_create')}}">Ajouter</a>
+			{% if childrens is not empty %}
+			{# Affiche la liste des enfants #}
+			{% for child in childrens %}
+			<p class="child-info">{{ child.name }}
 				-
 				{{ child.ageRange }}
 				ans
 				<a class="btn btn-second" href="{{ path('child_edit', {'id': child.id}) }}">Modifier</a>
 			</p>
-
+	</div>
 		{% endfor %}
 	{% endif %}
 
 	<div class="user-activities">
-		<h2>Mes activités</h2>
+		<h2 class="account-title">Mes activités</h2>
 		{% if is_granted('ROLE_ANIMATEUR') %}
 			<a class="btn" href="{{ path('activity_create') }}">Ajouter</a>
 		{% endif %}

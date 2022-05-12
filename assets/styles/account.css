@@ -1,0 +1,27 @@
+.user-info img {
+    width: 100px;
+    height: 100px;
+}
+
+.account-title {
+    text-align: center;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.user-activities {
+    text-align: center;
+}
+
+.childrens-type, .child-info {
+    text-align: center;
+}
+
+.child-info {
+    display: block;
+}
