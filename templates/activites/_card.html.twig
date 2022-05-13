@@ -18,7 +18,6 @@
                 {# Lien vers profil de l'animateur avec son avatar#}
                 <div class="avatar-icon">  
                     <span>Animé par : {{ activity.user.name }}</span>
-
                     <div>        
                     {% if activity.user.avatar is empty%}
                         <img src="{{ asset('/assets/img/avatar_test.png') }}"/>
@@ -38,15 +37,16 @@
         <ul class="ulcenter bouton-acti">
             {# Si non enregistré redirection vers Login
             sinon vers formulaire d'enregistrement enfants participants #}
-            <li>                {% if app.user %}
-                <a class="card-btn" href="{{ path('link_activity_to_children', {id:activity.id}) }}">Participer</a>
+            <li>
+                {% if app.user %}
+                    <a class="card-btn" href="{{ path('link_activity_to_children', {id:activity.id}) }}">Participer</a>
                 {% else %}
                     <a class="card-btn" href="">S'inscrire</a>
                 {% endif %}
             </li>
         </ul>
-
-            {% if currentPage == 'user' %}
+        {# non fonctionnel #}
+            {# {% if currentPage == 'user' %}
                 <a href="" >UN LIEN POUR EDITER L'ACTIVITE</a>
-            {% endif %}
+            {% endif %} #}
  </div>
