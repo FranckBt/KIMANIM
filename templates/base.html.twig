@@ -85,7 +85,11 @@
 			<footer>
 				<div class="flex">
 					<p class="role">
+					{% if app.user %}
+						<a href="{{path('account_index')}}">Mon Compte</a>
+					{% else %}
 						<a href="{{path('register')}}">Vous êtes parent</a>
+					{% endif %}
 					</p>
 					<ul class="social-media">
 						<li class="social-icon">
@@ -99,7 +103,11 @@
 						</li>
 					</ul>
 					<p class="role">
+					{% if app.user %}
+						<a href="{{path('logout')}}">Déconnexion</a>
+					{% else %}
 						<a href="{{path('register')}}">Vous êtes animateur</a>
+					{% endif %}
 					</p>
 				</div>
 

@@ -13,7 +13,7 @@ class DefaultFrontController extends AbstractController
     public function home(ActivitiesRepository $activitiesRepository): Response
     {
         $activ = $activitiesRepository->findBy(
-                ['status' => 'annule'],
+                ['status' => 'en ligne'],
                 ['start_on' => 'DESC']
         );
         
