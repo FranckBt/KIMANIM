@@ -6,6 +6,7 @@
     <div class="wrap">
         <h1>{{activity.title}}</h1>
         <p>Activité prévue pour le: {{ activity.startOn | date("d-m-Y à H:m", "Europe/Paris") }}<p>
+        <a class="btn" href="{{path('child_create')}}">Ajouter un nouvel enfant</a>
     </div>
     {{ form_start(form) }}
     <h2>Quels enfants participeront à cette activité&nbsp?</h2>

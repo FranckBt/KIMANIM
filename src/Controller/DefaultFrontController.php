@@ -12,11 +12,15 @@ class DefaultFrontController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function home(ActivitiesRepository $activitiesRepository): Response
     {
-        return $this->render('defaultfront/home.html.twig', [
-            'activities' => $activitiesRepository->findBy(
-                ['status' => 'Confirmé'],
+        $activ = $activitiesRepository->findBy(
+                ['status' => 'annule'],
                 ['start_on' => 'DESC']
-                )
+        );
+        
+        // dd($activ);
+
+        return $this->render('defaultfront/home.html.twig', [
+            'activities' => $activ
         ]);
     }
 

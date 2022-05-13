@@ -37,21 +37,23 @@
 			{% if childrens is not empty %}
 			{# Affiche la liste des enfants #}
 			{% for child in childrens %}
-			<p class="child-info">{{ child.name }}
+			<div class="child-info">{{ child.name }}
 				-
 				{{ child.ageRange }}
 				ans
 				<a class="btn-account btn-second" href="{{ path('child_edit', {'id': child.id}) }}">Modifier</a>
-			</p>
+				{% for activity in child.activities %}
+				<p>Inscrit(e) à : {{ activity.title }},  prévue le : {{ activity.startOn | date("d-m-Y", "Europe/Paris") }} <a href="{{ path('link_activity_to_children', {id:activity.id}) }}">Désinscrire</a></p>
+			{% endfor %}
 	</div>
+			</div>
 		{% endfor %}
 	{% endif %}
 
+	{% if is_granted('ROLE_ANIMATEUR') %}
 	<div class="user-activities">
 		<h2 class="account-title">Mes activités</h2>
-		{% if is_granted('ROLE_ANIMATEUR') %}
 			<a class="btn-account" href="{{ path('activity_create') }}">Ajouter</a>
-		{% endif %}
 		<div>
 			<p>Publiées</p>
 			{% for activity in published %}
@@ -76,5 +78,6 @@
 			{% endfor %}
 		</div>
 	</div>
+	{% endif %}
 
 {% endblock %}
