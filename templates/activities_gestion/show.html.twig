@@ -49,10 +49,11 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_activities_gestion_index') }}">Retour liste</a>
-
-    <a href="{{ path('app_activities_gestion_edit', {'id': activity.id}) }}">Edition</a>
-
+<div class="mb">
+    <a class=" btn btn-primary btnReturn" href="{{ path('app_activities_gestion_index') }}">Retour liste</a>
+    </div>
+<div class="mb">
+    <a class=" btn btn-succes btnEdit" href="{{ path('app_activities_gestion_edit', {'id': activity.id}) }}">Edition</a>
+</div>
     {{ include('activities_gestion/_delete_form.html.twig') }}
 {% endblock %}
