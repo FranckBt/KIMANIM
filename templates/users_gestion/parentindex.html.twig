@@ -8,12 +8,13 @@
 			<tr>
 				<th>Id</th>
 				
-				<th>Prenom</th>
-				<th>Created_at</th>
+				<th>Prénom</th>
 				<th>Nom</th>
+				<th>Créé le</th>
+		
 				<th>Actif</th>
-				<th>Validate</th>
-				<th>actions</th>
+				<th>Valide</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,15 +23,14 @@
 				
 					<tr>
 						<td>{{ user.id }}</td>
-
 						<td>{{ user.surname }}</td>
-						<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ user.name }}</td>
+						<td>{{ user.createdAt ? user.createdAt|date('d-M-Y H:i:s') : '' }}</td>
 						<td>{{ user.actif ? 'Yes' : 'No' }}</td>
 						<td>{{ user.validate ? 'Yes' : 'No' }}</td>
 						<td>
-							<a href="{{ path('app_users_gestion_show', {'id': user.id}) }}">show</a>
-							<a href="{{ path('app_users_gestion_edit', {'id': user.id}) }}">edit</a>
+							<a href="{{ path('app_users_gestion_show', {'id': user.id}) }}">Aperçu</a>
+							<a href="{{ path('app_users_gestion_edit', {'id': user.id}) }}">| Edition</a>
 						</td>
 					</tr>
 

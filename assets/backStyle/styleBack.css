@@ -16,17 +16,26 @@ img {
 .logoC {
     width: 10%;
 }
-
-
+.btnEdit{
+    color: white;
+    background-color: #467c29;
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+.btnReturn{
+    color: white;
+    background-color: #4e7e8c;
+    padding: .5rem;
+    border-radius: 5px;
+}
+.mb{
+    margin-bottom: 1rem;
+}
 .btnE{
  padding: .5rem;
- margin-bottom: .5rem;
 }
-/* .flexBtn {
-    height: 20px;
-    width: auto;
-    display: flex;
-} */
+
 
 .selectR{
     width: 20%;
